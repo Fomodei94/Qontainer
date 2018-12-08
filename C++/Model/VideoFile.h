@@ -1,19 +1,23 @@
-#include <String> 
+#include <string> 
+using std::string;
+using std::to_string();
 
 class VideoFile {
 	
 	private:
-		string title;
-		string genre;
+		string title,
+				genre,
+				nation;
 		Date publishingDate;
-		string nation;
 		
 		class Date {
 			private:
-				int day;
-				int month;
-				int year;
+				int day,
+					month,
+					year;
 			public:
+				//CONSTRUCTOR:
+				Date(int d, int m, int y);
 				//GETTERS:
 				int getDay();
 				int getMonth();
@@ -24,6 +28,8 @@ class VideoFile {
 				void setYear(int y);
 				//CONSISTENCE CHECK:
 				bool isDateCorrect(int d, int m, int y);
+				//PRINTING FUNCTION:
+				string printDateString(int d, int m, int y);
 		};
 		
 	public:
