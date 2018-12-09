@@ -1,13 +1,11 @@
-# QONTAINER TODO LIST 
+# QONTAINER TODO LIST
 
-* Idea gerarchia: videoteca, video (base astr.), film, serieTV, Anime.
+* Trovare il modo di stampare il tipo Date come stringa (con eventuale padding di 0 e separatori).
 
-* Possibile 4a classe: Partite sportive o Documentari
-
-* Configurare la VM di Ranzi su VirtualBox
-
-* Studiare Template e Smart Pointers templatizzati.
+* Definire template contenitore e Smart pointer con gestione profonda della memoria.
 
 * Validazione campi dati (soprattutto le date, forse necessarie regexp)
 
-* Spunti da: MangAnimeList e esercizio dList Ranzi.
+* Configurare la VM di Ranzi su VirtualBox
+
+* Spunti da: MangAnimeList, Lazur e esercizio dList Ranzi.
