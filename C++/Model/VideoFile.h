@@ -10,6 +10,8 @@ class VideoFile {
 				nation;
 		Date publishingDate;
 		
+		// METODO PRIVATO (O PROTETTO) DI UTILITA' PER VERIFICARE LUNGH MAX STRINGHE QUI !!!
+		
 	public:
 		// GETTERS:
 		string getTitle();

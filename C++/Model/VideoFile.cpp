@@ -1,24 +1,38 @@
 #include "VideoFile.h"
 
-
-
-string getTitle() {
+//  GETTERS
+string VideoFile::getTitle() {
 	return title;
 }
 
-string getGenre() {
+string VideoFile::getGenre() {
 	return genre;
 }
 
-string getNation() {
+string VideoFile::getNation() {
 	return nation;
 }
 
-Date getPublishingDate() {
+Date VideoFile::getPublishingDate() {
 	return publishingDate;
 }
 
-void setTitle(string tit) {
+//  SETTERS
+void VideoFile::setTitle(string tit) {
 	// CONTROLLO SULLA LUNGHEZZA STRINGA QUI !!!
 	title = tit;
+}
+
+void VideoFile::setGenre(string gen) {
+	// CONTROLLO LUNGHEZZA STRINGA QUI !!!
+	genre = gen;
+}
+
+void VideoFile::setPublishingDate(Date dat) {
+	publishingDate = dat;
+}
+
+void VideoFile::setNation(string nat) {
+	// CONTROLLO SULLA LUNGHEZZA STRINGA QUI !!!
+	nation = nat;
 }
