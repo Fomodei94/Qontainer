@@ -1,3 +1,6 @@
+#ifndef VIDEOFILE_H
+#define VIDEOFILE_H
+
 #include <string> 
 using std::string;
 
@@ -30,3 +33,5 @@ class VideoFile {
 		void setPublishingYear(int year);
 		void setNation(string nat);
 };
+
+#endif

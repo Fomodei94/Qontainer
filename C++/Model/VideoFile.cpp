@@ -1,5 +1,5 @@
 #include "VideoFile.h"
-
+using std::string;
 // CONSTRUCTORS
 VideoFile::VideoFile(string tit, string gen, string nat, int year) : title(tit), genre(gen), nation(nat), publishingYear(year) {
 	// CONTROLLI DI CONSISTENZA VALORI QUI !!!
