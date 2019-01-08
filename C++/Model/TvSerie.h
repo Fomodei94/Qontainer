@@ -1,3 +1,6 @@
+#ifndef TVSERIE_H
+#define TVSERIE_H
+
 #include "VideoFile.h"
 
 class TvSerie: public VideoFile {
@@ -17,3 +20,5 @@ class TvSerie: public VideoFile {
 		void setSeasons(int seas);
 		void setFinished(bool fin);
 };
+
+#endif

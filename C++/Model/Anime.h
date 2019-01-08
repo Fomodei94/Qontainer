@@ -1,3 +1,6 @@
+#ifndef ANIME_H
+#define ANIME_H
+
 #include "VideoFile.h"
 
 class Anime: public VideoFile {
@@ -14,3 +17,5 @@ class Anime: public VideoFile {
 		void setEpisodes(int ep);
 		void setFinished(bool fin);
 };
+
+#endif

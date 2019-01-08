@@ -1,3 +1,6 @@
+#ifndef SPORTMATCH_H
+#define SPORTMATCH_H
+
 #include "VideoFile"
 
 class SportMatch: public VideoFile {
@@ -17,3 +20,5 @@ class SportMatch: public VideoFile {
 		void setHomeTeam();
 		void setGuestTeam();
 };
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef FILM_H
+#define FILM_H
+
 #include "VideoFile.h"
 
 class Film: public VideoFile {
@@ -15,3 +18,5 @@ class Film: public VideoFile {
 		void setLenght(int len);
 	
 };
+
+#endif
