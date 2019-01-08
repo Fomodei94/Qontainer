@@ -13,8 +13,8 @@ string VideoFile::getNation() {
 	return nation;
 }
 
-Date VideoFile::getPublishingDate() {
-	return publishingDate;
+int VideoFile::getPublishingYear() {
+	return publishingYear;
 }
 
 //  SETTERS
@@ -28,8 +28,8 @@ void VideoFile::setGenre(string gen) {
 	genre = gen;
 }
 
-void VideoFile::setPublishingDate(Date dat) {
-	publishingDate = dat;
+void VideoFile::setPublishingYear(int year) {
+	publishingYear = year;
 }
 
 void VideoFile::setNation(string nat) {

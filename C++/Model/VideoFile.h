@@ -1,4 +1,3 @@
-#include "Date.h"
 #include <string> 
 using std::string;
 
@@ -8,7 +7,7 @@ class VideoFile {
 		string title,
 				genre,
 				nation;
-		Date publishingDate;
+		int publishingYear;
 		
 		// METODO PRIVATO (O PROTETTO) DI UTILITA' PER VERIFICARE LUNGH MAX STRINGHE QUI !!!
 		
@@ -16,11 +15,11 @@ class VideoFile {
 		// GETTERS:
 		string getTitle();
 		string getGenre();
-		Date getPublishingDate();
+		int getPublishingYear();
 		string getNation();
 		//SETTERS:
 		void setTitle(string tit);
 		void setGenre(string gen);
-		void setPublishingDate(Date dat);
+		void setPublishingYear(int year);
 		void setNation(string nat);
 };
