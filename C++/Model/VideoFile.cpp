@@ -1,5 +1,12 @@
 #include "VideoFile.h"
 
+// CONSTRUCTORS
+VideoFile::VideoFile(string tit, string gen, string nat, int year) : title(tit), genre(gen), nation(nat), publishingYear(year) {
+	// CONTROLLI DI CONSISTENZA VALORI QUI !!!
+}
+
+
+
 //  GETTERS
 string VideoFile::getTitle() {
 	return title;
