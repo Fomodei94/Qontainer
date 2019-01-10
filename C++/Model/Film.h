@@ -1,3 +1,6 @@
+#ifndef FILM_H
+#define FILM_H
+
 #include "VideoFile.h"
 
 class Film: public VideoFile {
@@ -7,11 +10,13 @@ class Film: public VideoFile {
 	
 	public:
 		//GETTERS:
-		string getDirector();
-		int getLenght();
+		string getDirector() const;
+		int getLenght() const;
 		
 		//SETTERS:
 		void setDirector(string dir);
 		void setLenght(int len);
 	
 };
+
+#endif

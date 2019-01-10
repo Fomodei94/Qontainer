@@ -23,10 +23,10 @@ class VideoFile {
 					int year=2000);
 		
 		// GETTERS:
-		string getTitle();
-		string getGenre();
-		int getPublishingYear();
-		string getNation();
+		string getTitle() const;
+		string getGenre() const;
+		int getPublishingYear() const;
+		string getNation() const;
 		// SETTERS:
 		void setTitle(string tit);
 		void setGenre(string gen);
