@@ -11,9 +11,9 @@ class SportMatch: public VideoFile {
 	
 	public:
 		//GETTERS:
-		string getChampionship();
-		string getHomeTeam();
-		string getGuestTeam();
+		string getChampionship() const;
+		string getHomeTeam() const;
+		string getGuestTeam() const;
 		
 		//SETTERS:
 		void setChampionship();

@@ -7,24 +7,26 @@ VideoFile::VideoFile(string tit, string gen, string nat, int year) : title(tit),
 
 
 
-//  GETTERS
-string VideoFile::getTitle() {
+//  GETTERS:
+
+string VideoFile::getTitle() const {
 	return title;
 }
 
-string VideoFile::getGenre() {
+string VideoFile::getGenre() const {
 	return genre;
 }
 
-string VideoFile::getNation() {
+string VideoFile::getNation() const {
 	return nation;
 }
 
-int VideoFile::getPublishingYear() {
+int VideoFile::getPublishingYear() const {
 	return publishingYear;
 }
 
-//  SETTERS
+//  SETTERS:
+
 void VideoFile::setTitle(string tit) {
 	// CONTROLLO SULLA LUNGHEZZA STRINGA QUI !!!
 	title = tit;

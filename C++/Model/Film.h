@@ -10,8 +10,8 @@ class Film: public VideoFile {
 	
 	public:
 		//GETTERS:
-		string getDirector();
-		int getLenght();
+		string getDirector() const;
+		int getLenght() const;
 		
 		//SETTERS:
 		void setDirector(string dir);

@@ -10,11 +10,16 @@ class TvSerie: public VideoFile {
 		
 	public:
 		//CONSTRUCTOR:
-		TvSerie()
+		TvSerie(string tit,
+				string gen,
+				string nat,
+				int year,
+				int seas,
+				bool fin)
 		
 		//GETTERS:
-		int getSeasons();
-		bool isFinished();
+		int getSeasons() const;
+		bool isFinished() const;
 		
 		//SETTERS:
 		void setSeasons(int seas);
