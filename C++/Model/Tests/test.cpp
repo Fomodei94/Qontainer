@@ -1,10 +1,16 @@
 #include "../VideoFile.h"
+#include "../TvSerie.h"
 #include <iostream>
 using std::cout;
 using std::endl;
 using std::string;
 
 int main() {
+	
+	// VideoFile Tests:
+	
+	cout<<"VIDEOFILE TESTS:"<<endl;
+	
 	VideoFile* punt = new VideoFile();
 	VideoFile* video = new VideoFile("TuaMamma", "Horror", "Italia", 2018);
 	
@@ -31,4 +37,13 @@ int main() {
 	cout<<video->getPublishingYear()<<endl;
 	punt->setTitle("Ocuspocus");
 	cout<<punt->getTitle()<<endl; 
+	
+	// TvSerie Tests:
+	
+	TvSerie* tv = new TvSerie("Tbbt", "comedy", "Usa", 2006, 12, false);
+	
+	cout<<endl<<"TVSERIE CONSTR & GETTERS TEST:"<<endl;
+	cout<<tv->getSeasons()<<endl;
+	cout<<tv->isFinished()<<endl;
+	
 }
