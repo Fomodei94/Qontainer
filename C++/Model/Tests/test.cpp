@@ -41,7 +41,7 @@ int main() {
 	
 	// TvSerie Tests:
 	
-	TvSerie* tv = new TvSerie("Tbbt", "comedy", "Usa", 2006, 12, false);
+	TvSerie* tv = new TvSerie("Tbbt", "comedy", "Usa", 2006, 12, true);
 	
 	cout<<endl<<"TVSERIE CONSTR & GETTERS TEST:"<<endl;
 	cout<<tv->getTitle()<<endl;
@@ -50,6 +50,7 @@ int main() {
 	cout<<tv->getPublishingYear()<<endl;
 	cout<<tv->getSeasons()<<endl;
 	cout<<tv->isFinished()<<endl;
+	cout<<tv->printTvSerieStatus()<<endl;
 	
 	// SportMatch Tests:
 	
