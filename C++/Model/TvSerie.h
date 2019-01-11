@@ -15,7 +15,7 @@ class TvSerie: public VideoFile {
 				string nat="Unknown",
 				int year=2000,
 				int seas=1,
-				bool fin=true)
+				bool fin=true);
 		
 		//GETTERS:
 		int getSeasons() const;
