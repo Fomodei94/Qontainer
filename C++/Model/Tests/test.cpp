@@ -1,5 +1,6 @@
 #include "../VideoFile.h"
 #include "../TvSerie.h"
+#include "../SportMatch.h"
 #include <iostream>
 using std::cout;
 using std::endl;
@@ -43,7 +44,34 @@ int main() {
 	TvSerie* tv = new TvSerie("Tbbt", "comedy", "Usa", 2006, 12, false);
 	
 	cout<<endl<<"TVSERIE CONSTR & GETTERS TEST:"<<endl;
+	cout<<tv->getTitle()<<endl;
+	cout<<tv->getGenre()<<endl;
+	cout<<tv->getNation()<<endl;
+	cout<<tv->getPublishingYear()<<endl;
 	cout<<tv->getSeasons()<<endl;
 	cout<<tv->isFinished()<<endl;
+	
+	// SportMatch Tests:
+	
+	SportMatch* sp = new SportMatch();
+	SportMatch* sport = new SportMatch("PartitaFiga", "Calcio", "Italia", 2008, "Serie A", "Inter", "Milan");
+	
+	cout<<endl<<"SPORTMATCH DEF. CONSTR. & GETTERS TEST:"<<endl;
+	cout<<sp->getTitle()<<endl;
+	cout<<sp->getGenre()<<endl;
+	cout<<sp->getNation()<<endl;
+	cout<<sp->getPublishingYear()<<endl;
+	cout<<sp->getChampionship()<<endl;
+	cout<<sp->getHomeTeam()<<endl;
+	cout<<sp->getGuestTeam()<<endl;
+	
+	cout<<endl<<"SPORTMATCH COMPLETE CONSTR. & GETTERS TEST:"<<endl;
+	cout<<sport->getTitle()<<endl;
+	cout<<sport->getGenre()<<endl;
+	cout<<sport->getNation()<<endl;
+	cout<<sport->getPublishingYear()<<endl;
+	cout<<sport->getChampionship()<<endl;
+	cout<<sport->getHomeTeam()<<endl;
+	cout<<sport->getGuestTeam()<<endl;
 	
 }
