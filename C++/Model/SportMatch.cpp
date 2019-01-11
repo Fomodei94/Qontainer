@@ -18,7 +18,7 @@ string SportMatch::getGuestTeam() const {
 	return guestTeam;
 }
 
-// SETTERS:
+// SETTERS:		CONTROLLI STRINGHE QUI !!!
 void SportMatch::setChampionship(string champ) {
 	championship = champ;
 }

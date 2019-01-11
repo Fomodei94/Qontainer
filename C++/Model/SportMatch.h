@@ -11,10 +11,10 @@ class SportMatch: public VideoFile {
 	
 	public:
 		// CONSTRUCTORS:
-		SportMatch(string tit,
-					string gen,
-					string nat,
-					int year,
+		SportMatch(string tit="Unknown",
+					string gen="Unknown",
+					string nat="Unknown",
+					int year=2000,
 					string champ="Unknown",
 					string homeT="Unknown",
 					string guestT="Unknown");
