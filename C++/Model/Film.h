@@ -9,6 +9,15 @@ class Film: public VideoFile {
 		int lenght;
 	
 	public:
+
+		//CONSTRUCTORS:
+		Film(string tit="Unknown",
+			string gen="Unknown",
+			string nat="Unknown",
+			int year=2000,
+			string dir="Unknown",
+			int lenght=0);
+
 		//GETTERS:
 		string getDirector() const;
 		int getLenght() const;
