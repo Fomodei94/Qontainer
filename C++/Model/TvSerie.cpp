@@ -19,3 +19,10 @@ void TvSerie::setSeasons(int seas) {
 void TvSerie::setFinished(bool fin) {
 	finished = fin;
 }
+
+// PUBLIC METHODS:
+
+string TvSerie::printTvSerieStatus() const {
+	if(this.isFinished()) return "Ended";
+	else return "In Progress";
+}

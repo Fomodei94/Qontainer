@@ -10,12 +10,12 @@ class TvSerie: public VideoFile {
 		
 	public:
 		//CONSTRUCTOR:
-		TvSerie(string tit,
-				string gen,
-				string nat,
-				int year,
-				int seas,
-				bool fin)
+		TvSerie(string tit="Unknown",
+				string gen="Unknown",
+				string nat="Unknown",
+				int year=2000,
+				int seas=1,
+				bool fin=true)
 		
 		//GETTERS:
 		int getSeasons() const;
@@ -24,6 +24,9 @@ class TvSerie: public VideoFile {
 		//SETTERS:
 		void setSeasons(int seas);
 		void setFinished(bool fin);
+		
+		// PUBLIC METHODS:
+		string printTvSerieStatus() const;
 };
 
 #endif
