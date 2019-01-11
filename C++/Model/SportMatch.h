@@ -1,7 +1,7 @@
 #ifndef SPORTMATCH_H
 #define SPORTMATCH_H
 
-#include "VideoFile"
+#include "VideoFile.h"
 
 class SportMatch: public VideoFile {
 	private:
@@ -10,15 +10,24 @@ class SportMatch: public VideoFile {
 		string guestTeam;
 	
 	public:
+		// CONSTRUCTORS:
+		SportMatch(string tit,
+					string gen,
+					string nat,
+					int year,
+					string champ="Unknown",
+					string homeT="Unknown",
+					string guestT="Unknown");
+
 		//GETTERS:
 		string getChampionship() const;
 		string getHomeTeam() const;
 		string getGuestTeam() const;
 		
 		//SETTERS:
-		void setChampionship();
-		void setHomeTeam();
-		void setGuestTeam();
+		void setChampionship(string champ);
+		void setHomeTeam(string homeT);
+		void setGuestTeam(string guestT);
 };
 
 #endif
