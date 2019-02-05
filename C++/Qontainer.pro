@@ -23,12 +23,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        View/MainWindow.cpp
-	View/SelectItemWindow.cpp
+        View/MainWindow.cpp \
+	View/SelectItemWindow.cpp \
 
 HEADERS += \
-        View/MainWindow.h
-	View/SelectItemWindow.h
+        View/MainWindow.h \
+	View/SelectItemWindow.h \
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

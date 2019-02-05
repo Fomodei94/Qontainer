@@ -3,7 +3,6 @@
 SelectItemWindow::SelectItemWindow(QWidget* parent) : QWidget(parent) {
 	setWindowTitle("Select Item Type");
 	setFixedSize(300,350);
-	setModal(true);
 	
 	layout = new QGridLayout(this);
 	
@@ -16,7 +15,7 @@ SelectItemWindow::SelectItemWindow(QWidget* parent) : QWidget(parent) {
 	cancelButton = new QPushButton("Cancel", this);
 	confirmButton = new QPushButton("Ok", this);
 	
-	layout->addWidget(selectTypeLabel,0,0,1,2);
+	layout->addWidget(selectTypeLabel,0,0);
 	layout->addWidget(videoFileRadioBtn,1,0);
 	layout->addWidget(movieRadioBtn,2,0);
 	layout->addWidget(tvSerieRadioBtn,3,0);
