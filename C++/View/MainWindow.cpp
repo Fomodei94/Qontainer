@@ -24,6 +24,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 	winLayout->addWidget(saveButton,1,4);
 	winLayout->addWidget(loadButton,1,5);
 	setLayout(winLayout);
+	
+	// Connect Signals:
+	connect(insertButton, SIGNAL(clicked()), this, SLOT(openSelectWindow()));
+}
+
+void MainWindow::openSelectWindow() {
+	selectItemWindow = new SelectItemWindow();
+	(*selectItemWindow).show();
 }
 
 MainWindow::~MainWindow() {

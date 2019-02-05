@@ -6,7 +6,7 @@
 #include <QWidget>
 #include <QTableView>
 #include <QPushButton>
-#include "addItemWindow.h"
+#include "SelectItemWindow.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -20,12 +20,14 @@ private:
 				*searchButton,
 				*saveButton,
 				*loadButton;
-	
-	
+	SelectItemWindow *selectItemWindow;	
 
 public:
     MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    
+public slots:
+	void openSelectWindow();
 };
 
 #endif // MAINWINDOW_H

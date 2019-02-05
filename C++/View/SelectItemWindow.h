@@ -5,22 +5,27 @@
 #include <QGridLayout>
 #include <QPushButton>
 #include <QLabel>
-#include <QComboBox>
+#include <QRadioButton>
 
 class SelectItemWindow : public QWidget {
-	
+	Q_OBJECT
 	private:
 		QGridLayout* layout;
-		QLabel 	*selectTypeLabel,
-				*videoFileLabel,
-				*movieLabel,
-				*tvSerieLabel,
-				*animeLabel,
-				*matchLabel;
-		
+		QLabel 	*selectTypeLabel;
+		QRadioButton 	*videoFileRadioBtn,
+						*movieRadioBtn,
+						*tvSerieRadioBtn,
+						*animeRadioBtn,
+						*matchRadioBtn;
+		QPushButton *confirmButton,
+					*cancelButton;
 		
 	public:
-	
+		SelectItemWindow(QWidget* parent = nullptr);
+		~SelectItemWindow() = default;
+		
+		
+		
 };
 
 #endif // SELECTITEMWINDOW_H
