@@ -6,6 +6,7 @@
 #include <QWidget>
 #include <QTableView>
 #include <QPushButton>
+#include "addItemWindow.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
