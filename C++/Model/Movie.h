@@ -1,9 +1,9 @@
-#ifndef FILM_H
-#define FILM_H
+#ifndef MOVIE_H
+#define MOVIE_H
 
 #include "VideoFile.h"
 
-class Film: public VideoFile {
+class Movie: public VideoFile {
 	private:
 		string director;
 		int lenght;
@@ -11,7 +11,7 @@ class Film: public VideoFile {
 	public:
 
 		//CONSTRUCTORS:
-		Film(string tit="Unknown",
+		Movie(string tit="Unknown",
 			string gen="Unknown",
 			string nat="Unknown",
 			int year=2000,
