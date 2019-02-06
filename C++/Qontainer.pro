@@ -24,11 +24,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         View/MainWindow.cpp \
-	View/SelectItemWindow.cpp \
+	View/setObjectWidget.cpp \
 
 HEADERS += \
         View/MainWindow.h \
-	View/SelectItemWindow.h \
+	View/setObjectWidget.h \
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

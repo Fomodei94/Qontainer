@@ -6,6 +6,7 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QRadioButton>
+#include <QString>
 
 class SelectItemWindow : public QWidget {
 	Q_OBJECT
@@ -21,7 +22,7 @@ class SelectItemWindow : public QWidget {
 					*cancelButton;
 		
 	public:
-		SelectItemWindow(QWidget* parent = nullptr);
+		SelectItemWindow(const QString& func, QWidget* parent = nullptr);
 		~SelectItemWindow() = default;
 		
 		

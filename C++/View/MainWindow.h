@@ -6,7 +6,8 @@
 #include <QWidget>
 #include <QTableView>
 #include <QPushButton>
-#include "SelectItemWindow.h"
+#include <QString>
+#include "setObjectWidget.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -17,17 +18,19 @@ private:
 	QTableView* table;
 	QPushButton	*insertButton,
 				*removeButton,
-				*searchButton,
+				*findButton,
 				*saveButton,
 				*loadButton;
-	SelectItemWindow *selectItemWindow;	
+	setObjectWidget *objectWindow;	
 
 public:
     MainWindow(QWidget *parent = 0);
     ~MainWindow();
     
 public slots:
-	void openSelectWindow();
+	void windowSelector();
+	void openSelectWindow(const QString& func);
+	
 };
 
 #endif // MAINWINDOW_H
