@@ -6,8 +6,8 @@ template <class any_type>
 class Qontainer {
 	private:
 		// Private data fields:
-		any_type* collection[];
-		int size;
+		any_type* collection;
+		int arraySize;
 		int obj_count;
 		
 		// Private Methods:
@@ -17,7 +17,10 @@ class Qontainer {
 		
 	public:
 		// Constructors:
-		Qontainer(int s=100);
+		Qontainer(int s=2);
+		
+		// Destructor:
+		~Qontainer();
 		
 		// Getters:
 		int getSize() const;
