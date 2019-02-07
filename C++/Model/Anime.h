@@ -9,13 +9,25 @@ class Anime: public VideoFile {
 		bool finished;
 		
 	public:
+	
+		//CONSTRUCTORS:
+		Anime(string tit="Unknown",
+			string gen="Unknown",
+			string nat="Unknown",
+			year=2000,
+			int epis=1,
+			bool fin=true);	
+		
 		//GETTERS:
-		int getEpisodes();
-		bool isFinished();
+		int getEpisodes() const;
+		bool isFinished() const;
 		
 		//SETTERS:
-		void setEpisodes(int ep);
+		void setEpisodes(int epis);
 		void setFinished(bool fin);
+		
+		// PUBLIC METHODS:
+		string printAnimeStatus() const;
 };
 
 #endif

@@ -1,0 +1,5 @@
+*.stash
+*.user
+moc_*
+*.o
+Makefile
