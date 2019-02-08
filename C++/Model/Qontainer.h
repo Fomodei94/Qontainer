@@ -44,7 +44,7 @@ class Qontainer {
 			collection[obj_count] = new_element;
 			obj_count++;
 		}
-	}
+		
 		//void remove(any_type t);
 		
 };
