@@ -11,35 +11,58 @@ class Qontainer {
 		int obj_count;
 		
 		// Private Methods:
-		void resize(int new_size);
-		
-		any_type[] deepCopy(any_type* a[]);
+		void resize(int new_size) {
+			any_type* new_array;
+			new_array = new any_type[new_size];
+			for(int i=0; i<arraySize; ++i) {
+				new_array[i] = collection[i];
+				delete collection[i];
+			}
+			collection = new_array;
+			arraySize = new_size;
+		}
 		
 	public:
 		// Constructors:
-		Qontainer(int s=2);
+		Qontainer(int s=2) : collection(new any_type[s]), arraySize(s), obj_count(0) {
+
+		}
 		
 		// Destructor:
-		~Qontainer();
+		~Qontainer()=default;
 		
 		// Getters:
-		int getSize() const;
+		int getSize() const {
+			return arraySize;
+		}
 		
 		// Public Methods:
 		
-		bool isEmpty() const;
+		bool isEmpty() const {
+			if(obj_count) return false;
+			else return true;
+		}
 		
-		bool isFull() const;
+		bool isFull() const {
+			if(arraySize == obj_count) return true;
+			else return false;
+		}
 		
-		void pushBack(any_type t);    // Tipo del parametro? 
-									// Puntatore a any_type o VideoFile?
-									// O riferimento costante?
-		void remove(any_type t);
+		void pushBack(any_type new_element) {
+			if(isFull()) resize(size + 10);
+			
+			if(!isFull()){
+				collection[obj_count] = new_element;
+				obj_count++;
+			}
+			
+			else throw("Error with element insertion!");
+			
+		}
 		
-		
-		
-		
+		//void remove(any_type t);
 		
 };
+
 
 #endif
