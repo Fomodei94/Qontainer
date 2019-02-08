@@ -5,6 +5,7 @@ template <class any_type>
 
 class Qontainer {
 	private:
+		
 		// Private data fields:
 		any_type* collection;
 		int arraySize;
@@ -16,8 +17,8 @@ class Qontainer {
 			new_array = new any_type[new_size];
 			for(int i=0; i<arraySize; ++i) {
 				new_array[i] = collection[i];
-				delete collection[i];
 			}
+			delete[] collection;
 			collection = new_array;
 			arraySize = new_size;
 		}
@@ -36,6 +37,22 @@ class Qontainer {
 			return arraySize;
 		}
 		
+		int getObjCount() const {
+			return obj_count;
+		}
+		
+		//Operators:
+		any_type& operator[] (int i) {
+			if(i>=0 && i<obj_count) {
+				return collection[i];
+			}
+			else throw("Out of bound element request");
+		}
+		
+		any_type* operator->() {
+			return (*collection);
+		}
+		
 		// Public Methods:
 		
 		bool isEmpty() const {
@@ -49,7 +66,7 @@ class Qontainer {
 		}
 		
 		void pushBack(any_type new_element) {
-			if(isFull()) resize(size + 10);
+			if(isFull()) resize(arraySize + 5);
 			
 			if(!isFull()){
 				collection[obj_count] = new_element;
