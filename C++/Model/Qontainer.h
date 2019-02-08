@@ -49,10 +49,6 @@ class Qontainer {
 			else throw("Out of bound element request");
 		}
 		
-		any_type* operator->() {
-			return (*collection);
-		}
-		
 		// Public Methods:
 		
 		bool isEmpty() const {
