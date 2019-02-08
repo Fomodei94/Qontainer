@@ -11,7 +11,16 @@ class Qontainer {
 		int obj_count;
 		
 		// Private Methods:
-		void resize(int new_size);
+		void resize(int new_size) {
+			any_type* new_array;
+			new_array = new any_type[new_size];
+			for(int i=0; i<arraySize; ++i) {
+				new_array[i] = collection[i];
+				delete collection[i];
+			}
+			collection = new_array;
+			arraySize = new_size;
+		}
 		
 	public:
 		// Constructors:
@@ -40,9 +49,15 @@ class Qontainer {
 		}
 		
 		void pushBack(any_type new_element) {
-			if(!isFull()) {
-			collection[obj_count] = new_element;
-			obj_count++;
+			if(isFull()) resize(size + 10);
+			
+			if(!isFull()){
+				collection[obj_count] = new_element;
+				obj_count++;
+			}
+			
+			else throw("Error with element insertion!");
+			
 		}
 		
 		//void remove(any_type t);
