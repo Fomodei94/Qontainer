@@ -5,6 +5,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 	setWindowTitle("Qontainer");
 	setMinimumSize(800,500);
 	
+	container = new Qontainer<VideoFile>();
+	
 	centralWidget = new QWidget(this);
 	setCentralWidget(centralWidget);
 	winLayout = new QGridLayout(centralWidget);

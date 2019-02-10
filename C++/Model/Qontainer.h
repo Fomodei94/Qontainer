@@ -24,7 +24,7 @@ class Qontainer {
 		}
 		
 		void Shift(int index) {
-			it = collection + index;
+			any_type* it = collection + index;
 			for(; it<arraySize-1; ++it) {
 				*it = *(it+1);
 			}

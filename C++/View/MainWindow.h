@@ -7,12 +7,15 @@
 #include <QTableView>
 #include <QPushButton>
 #include <QString>
+#include "../Model/Qontainer.h"
+#include "../Model/VideoFile.h"
 #include "setObjectWidget.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
 private:
+	Qontainer<VideoFile>* container;
 	QGridLayout* winLayout;
 	QWidget* centralWidget;
 	QTableView* table;

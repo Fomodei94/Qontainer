@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<VideoFiles>
+	<VideoFile type="generic">
+		<title>Holidays</title>
+		<genre>HomeVideo</genre>
+		<nation>Netherlands</nation>
+		<year>2017</year>
+	</VideoFile>
+	
+	<VideoFile type="Movie">
+		<title>The Ring</title>
+		<genre>Horror</genre>
+		<nation>Poland</nation>
+		<year>2011</year>
+		<director>Nolan</director>
+		<lenght>120</lenght>
+	</VideoFile>
+	
+	<VideoFile type="Anime">
+		<title>OnePiece</title>
+		<genre>Adventure</genre>
+		<nation>Japan</nation>
+		<year>2006</year>
+		<finished>0</finished>
+		<episode>121</episode>
+	</VideoFile>
+
+	<VideoFile type="Anime">
+		<title>DragonBall</title>
+		<genre>Fighting</genre>
+		<nation>Japan</nation>
+		<year>1986</year>
+		<finished>1</finished>
+		<episodes>382</episode>
+	</VideoFile>
+	
+	<VideoFile type="TvSerie">
+		<title>The100</title>
+		<genre>Survival</genre>
+		<nation>USA</nation>
+		<year>2014</year>
+		<finished>0</finished>
+		<seasons>5</season>
+	</VideoFile>
+	
+	<VideoFile type="Match">
+		<title>Semi-Final</title>
+		<genre>Soccer</genre>
+		<nation>Italy</nation>
+		<year>2008</year>
+		<championship>Italia's Cup</championship>
+		<homeTeam>Milan</homeTeam>
+		<guestTeam>Inter</guestTeam>
+	</VideoFile>
+</VideoFiles>

@@ -23,10 +23,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
+	Model/VideoFile.cpp \
         View/MainWindow.cpp \
 	View/setObjectWidget.cpp \
 
 HEADERS += \
+	Model/VideoFile.h \
         View/MainWindow.h \
 	View/setObjectWidget.h \
 
