@@ -8,6 +8,7 @@
 #include <QSpinBox>
 #include <QLineEdit>
 #include <QCheckBox>
+#include <QPushButton>
 
 class setObjectWidget : public QWidget {
 	Q_OBJECT
@@ -31,12 +32,18 @@ class setObjectWidget : public QWidget {
 				*animeFinLabel,
 				*episodesLabel,
 				*serieFinLabel,
-				*seasonsLabel;
+				*seasonsLabel,
+				*championshipLabel,
+				*homeTeamLabel,
+				*guestTeamLabel;
 				
 		QLineEdit	*titleText,
 					*genreText,
 					*nationText,
-					*directorText;
+					*directorText,
+					*championshipText,
+					*homeTeamText,
+					*guestTeamText;
 					
 		QSpinBox	*yearSpinbox,
 					*lenghtSpinbox,
@@ -45,12 +52,18 @@ class setObjectWidget : public QWidget {
 					
 		QCheckBox	*animeFinCheckbox,
 					*serieFinCheckbox;
+
+		QPushButton	*cancelButton,
+					*confirmButton;
 		
 	public:
 		setObjectWidget(const QString& func, QWidget* parent = nullptr);
 		
 	public slots:
-		
+		void exitWindow();
+		void confirmInsertion();
+		void confirmRemoval();
+		void confirmSearch();
 };
 
 #endif // SETOBJECTWIDGET_H

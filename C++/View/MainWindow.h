@@ -27,7 +27,7 @@ private:
 	setObjectWidget *objectWindow;	
 
 public:
-    MainWindow(QWidget *parent = 0);
+    MainWindow(Qontainer<VideoFile> *container, QWidget *parent = 0);
     ~MainWindow();
     
 public slots:

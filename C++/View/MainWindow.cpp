@@ -1,11 +1,11 @@
 #include "MainWindow.h"
 
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
+MainWindow::MainWindow(Qontainer<VideoFile> *container, QWidget *parent) : QMainWindow(parent) {
 	// Set MainWindow properties
 	setWindowTitle("Qontainer");
 	setMinimumSize(800,500);
 	
-	container = new Qontainer<VideoFile>();
+	//container = new Qontainer<VideoFile>();
 	
 	centralWidget = new QWidget(this);
 	setCentralWidget(centralWidget);
