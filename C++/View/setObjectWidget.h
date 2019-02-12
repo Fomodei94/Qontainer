@@ -34,7 +34,7 @@ class setObjectWidget : public QWidget {
 				*nationLabel,
 				*yearLabel,
 				*directorLabel,
-				*lenghtLabel,
+				*lengthLabel,
 				*animeFinLabel,
 				*episodesLabel,
 				*serieFinLabel,
@@ -52,7 +52,7 @@ class setObjectWidget : public QWidget {
 					*guestTeamText;
 					
 		QSpinBox	*yearSpinbox,
-					*lenghtSpinbox,
+					*lengthSpinbox,
 					*episodesSpinbox,
 					*seasonsSpinbox;
 					

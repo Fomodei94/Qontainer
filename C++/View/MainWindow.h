@@ -22,8 +22,7 @@ private:
 	QPushButton	*insertButton,
 				*removeButton,
 				*findButton,
-				*saveButton,
-				*loadButton;
+				*saveButton;
 	setObjectWidget *objectWindow;	
 
 public:

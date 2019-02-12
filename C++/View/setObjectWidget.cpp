@@ -29,9 +29,9 @@ setObjectWidget::setObjectWidget(Qontainer<VideoFile> *container, const QString&
 	movieLabel = new QLabel("<h3>Movie specific info:</h3>", this);
 	directorLabel = new QLabel("Director:", this);
 	directorText = new QLineEdit(this);
-	lenghtLabel = new QLabel("Lenght (min):", this);
-	lenghtSpinbox = new QSpinBox(this);
-	lenghtSpinbox->setRange(1,999);
+	lengthLabel = new QLabel("Length (min):", this);
+	lengthSpinbox = new QSpinBox(this);
+	lengthSpinbox->setRange(1,999);
 	
 	animeLabel = new QLabel("<h3>Anime specific info:</h3>", this);
 	episodesLabel = new QLabel("Episodes number:", this);
@@ -72,8 +72,8 @@ setObjectWidget::setObjectWidget(Qontainer<VideoFile> *container, const QString&
 	layout->addWidget(movieLabel,5,0,1,4);
 	layout->addWidget(directorLabel,6,0);
 	layout->addWidget(directorText,6,1,1,2);
-	layout->addWidget(lenghtLabel,6,3);
-	layout->addWidget(lenghtSpinbox,6,4);
+	layout->addWidget(lengthLabel,6,3);
+	layout->addWidget(lengthSpinbox,6,4);
 	layout->addWidget(animeLabel,7,0,1,4);
 	layout->addWidget(episodesLabel,8,0,1,2);
 	layout->addWidget(episodesSpinbox,8,2);
@@ -111,7 +111,7 @@ void setObjectWidget::disableFields() {
 	switch(objSelector->currentIndex()) {
 		case 0:
 			directorText->setEnabled(false);
-			lenghtSpinbox->setEnabled(false);
+			lengthSpinbox->setEnabled(false);
 			episodesSpinbox->setEnabled(false);
 			animeFinCheckbox->setEnabled(false);
 			seasonsSpinbox->setEnabled(false);
@@ -122,7 +122,7 @@ void setObjectWidget::disableFields() {
 			break;
 		case 1:
 			directorText->setEnabled(true);
-			lenghtSpinbox->setEnabled(true);
+			lengthSpinbox->setEnabled(true);
 			episodesSpinbox->setEnabled(false);
 			animeFinCheckbox->setEnabled(false);
 			seasonsSpinbox->setEnabled(false);
@@ -133,7 +133,7 @@ void setObjectWidget::disableFields() {
 			break;
 		case 2:
 			directorText->setEnabled(false);
-			lenghtSpinbox->setEnabled(false);
+			lengthSpinbox->setEnabled(false);
 			episodesSpinbox->setEnabled(true);
 			animeFinCheckbox->setEnabled(true);
 			seasonsSpinbox->setEnabled(false);
@@ -144,7 +144,7 @@ void setObjectWidget::disableFields() {
 			break;
 		case 3:
 			directorText->setEnabled(false);
-			lenghtSpinbox->setEnabled(false);
+			lengthSpinbox->setEnabled(false);
 			episodesSpinbox->setEnabled(false);
 			animeFinCheckbox->setEnabled(false);
 			seasonsSpinbox->setEnabled(true);
@@ -155,7 +155,7 @@ void setObjectWidget::disableFields() {
 			break;
 		case 4:
 			directorText->setEnabled(false);
-			lenghtSpinbox->setEnabled(false);
+			lengthSpinbox->setEnabled(false);
 			episodesSpinbox->setEnabled(false);
 			animeFinCheckbox->setEnabled(false);
 			seasonsSpinbox->setEnabled(false);
