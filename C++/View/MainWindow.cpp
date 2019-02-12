@@ -13,8 +13,8 @@ MainWindow::MainWindow(Qontainer<VideoFile> *container, QWidget *parent) : QMain
 
 	table = new QTableView(centralWidget);
 	insertButton = new QPushButton("Insert Item", centralWidget);
-	removeButton = new QPushButton("Remove Item(s)", centralWidget );
-	findButton = new QPushButton("Find", centralWidget);
+	removeButton = new QPushButton("Remove Items", centralWidget );
+	findButton = new QPushButton("Find Items", centralWidget);
 	saveButton = new QPushButton("Save Changes", centralWidget);
 
 	// Layout setting
@@ -26,23 +26,27 @@ MainWindow::MainWindow(Qontainer<VideoFile> *container, QWidget *parent) : QMain
 	setLayout(winLayout);
 
 	// Connect Signals:
-	connect(insertButton, SIGNAL(clicked()), this, SLOT(windowSelector()));
+	connect(insertButton, SIGNAL(clicked()), this, SLOT(openInsertWindow()));
 	connect(removeButton, SIGNAL(clicked()), this, SLOT(windowSelector()));
 	connect(findButton, SIGNAL(clicked()), this, SLOT(windowSelector()));
 }
 
+void MainWindow::openInsertWindow() {
+	objectWindow = new setObjectWidget(container);
+	(*objectWindow).show();
+}
+
 void MainWindow::windowSelector() {
 	if (QPushButton* button = dynamic_cast<QPushButton*>(sender())) {
-		if (button == insertButton) openSelectWindow("Insert");
-		else if(button == removeButton) openSelectWindow("Remove");
-		else if(button == findButton) openSelectWindow("Find");
+		if(button == removeButton) openSelectWindow(true);
+		else if(button == findButton) openSelectWindow(false);
 		}
 	else throw("Bad Signal/Slot combo");
 }
 
-void MainWindow::openSelectWindow(const QString& func) {
-	objectWindow = new setObjectWidget(container, func);
-	(*objectWindow).show();
+void MainWindow::openSelectWindow(bool remove) {
+	searchWindow = new searchByWidget(container, remove);
+	(*searchWindow).show();
 }
 
 MainWindow::~MainWindow() {

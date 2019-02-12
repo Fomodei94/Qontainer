@@ -1,6 +1,12 @@
 #ifndef QONTAINER_H
 #define QONTAINER_H
 
+#include "VideoFile.h"
+#include "Movie.h"
+#include "Anime.h"
+#include "TvSerie.h"
+#include "SportMatch.h"
+
 template <class any_type>
 
 class Qontainer {
@@ -97,7 +103,9 @@ class Qontainer {
 			else return false; // Insertion Failed.
 		}
         
-        int searchByTitle(const QString& tit, int[]& toReturn) {
+        // Search Methods:
+        
+        int searchByTitle(const QString& tit, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
 				if(collection[i].getTitle() == tit) {
@@ -108,15 +116,7 @@ class Qontainer {
 			return ind;
 		}
 		
-		void genericRemove(const int[]& pos, const int& numitems){
-			for (unsigned int i = numitems - 1; i==0; i-- ){
-				int position_to_delete = pos[i];
-				delete container[position_to_delete];
-				Shift(position_to_delete);
-			}
-		}
-		
-		int[] searchByGenre(const QString& gen) {
+		int searchByGenre(const QString& gen, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
 				if(collection[i].getGenre() == gen) {
@@ -127,7 +127,7 @@ class Qontainer {
 			return ind;
 		}
 		
-		int[] searchByNation(const QString& nat) {
+		int searchByNation(const QString& nat, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
 				if(collection[i].getNation() == nat) {
@@ -138,7 +138,7 @@ class Qontainer {
 			return ind;
 		}
 		
-		int[] searchByYear(const int& year) {
+		int searchByYear(const int& year, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
 				if(collection[i].getPublishingYear() == year) {
@@ -149,29 +149,92 @@ class Qontainer {
 			return ind;
 		}
 		
+		int searchByDirector(const QString& dir, int* toReturn) {
+			int ind=0;
+			for(unsigned int i=0; i<obj_count; ++i){
+				if(dynamic_cast<Movie&>(collection[i])) {
+					if(collection[i].getDirector() == dir) {
+						toReturn[ind] = i;
+						ind++;
+					}
+				}
+			return ind;
+			}
+		}
+		
+		int searchByEpisodes(const int& epis, int* toReturn) {
+			int ind=0;
+			for(unsigned int i=0; i<obj_count; ++i){
+				if(dynamic_cast<Anime&> (collection[i])) {
+					if(collection[i].getEpisodes() == epis) {
+						toReturn[ind] = i;
+						ind++;
+					}
+				}
+			}
+			return ind;
+		}
+		
+		int searchBySeasons(const int& seas, int* toReturn) {
+			int ind=0;
+			for(unsigned int i=0; i<obj_count; ++i){
+				if(dynamic_cast<TvSerie&> (collection[i])) {
+					if(collection[i].getSeasons() == seas) {
+						toReturn[ind] = i;
+						ind++;
+					}
+				}
+			}
+			return ind;
+		}
+		
+		int searchByChampionship(const QString& champ, int* toReturn) {
+			int ind=0;
+			for(unsigned int i=0; i<obj_count; ++i){
+				if(dynamic_cast<SportMatch&>(collection[i])) {
+					if(collection[i].getChampionship() == champ) {
+						toReturn[ind] = i;
+						ind++;
+					}
+				}
+			return ind;
+			}
+		}
+		
+		// Remove Methods:
+		
+		void genericRemove(const int* pos, const int& numitems){
+			for (unsigned int i = numitems - 1; i==0; i-- ){
+				int position_to_delete = pos[i];
+				delete collection[position_to_delete];
+				Shift(position_to_delete);
+			}
+		}
+		
 		void removeByTitle(const QString& tit){
 			int toRemove[obj_count];
-			int numresults = searchByTitle(tit, toRemove);
+			int numResults = searchByTitle(tit, toRemove);
 			genericRemove(toRemove, numResults);
 		}
 		
 		void removeByGenre(const QString& gen){
 			int toRemove[obj_count];
-			int numresults = searchByGenre(gen, toRemove);
+			int numResults = searchByGenre(gen, toRemove);
 			genericRemove(toRemove, numResults);
 		}
 		
 		void removeByNation(const QString& nat){
 			int toRemove[obj_count];
-			int numresults = searchByNation(nat, toRemove);
+			int numResults = searchByNation(nat, toRemove);
 			genericRemove(toRemove, numResults);
 		}
 				
 		void removeByYear(const int& year){
 			int toRemove[obj_count];
-			int numresults = searchByYear(year, toRemove);
+			int numResults = searchByYear(year, toRemove);
 			genericRemove(toRemove, numResults);
 		}
+
 };
 
 

@@ -24,13 +24,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
 	Model/VideoFile.cpp \
+	Model/Movie.cpp \
+	Model/Anime.cpp \
+	Model/TvSerie.cpp \
+	Model/SportMatch.cpp \
         View/MainWindow.cpp \
 	View/setObjectWidget.cpp \
+	View/searchByWidget.cpp \
 
 HEADERS += \
 	Model/VideoFile.h \
+	Model/Movie.h \
+	Model/Anime.h \
+	Model/TvSerie.h \
+	Model/SportMatch.h \
         View/MainWindow.h \
 	View/setObjectWidget.h \
+	View/searchByWidget.h \
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

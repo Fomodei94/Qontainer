@@ -11,6 +11,10 @@
 #include <QPushButton>
 #include "../Model/Qontainer.h"
 #include "../Model/VideoFile.h"
+#include "../Model/Movie.h"
+#include "../Model/Anime.h"
+#include "../Model/TvSerie.h"
+#include "../Model/SportMatch.h"
 #include <string>
 
 class setObjectWidget : public QWidget {
@@ -63,7 +67,7 @@ class setObjectWidget : public QWidget {
 					*confirmButton;
 		
 	public:
-		setObjectWidget(Qontainer<VideoFile> *container, const QString& func, QWidget* parent = nullptr);
+		setObjectWidget(Qontainer<VideoFile> *container, QWidget* parent = nullptr);
 		
 	public slots:
 		void exitWindow();

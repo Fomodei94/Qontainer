@@ -1,12 +1,12 @@
 #include "setObjectWidget.h"
 
-setObjectWidget::setObjectWidget(Qontainer<VideoFile> *container, const QString& func, QWidget* parent) : QWidget(parent), container(container) {
+setObjectWidget::setObjectWidget(Qontainer<VideoFile> *container, QWidget* parent) : QWidget(parent), container(container) {
 	setWindowTitle("Select item(s) type");
 	setFixedSize(380,700);
 	
 	layout = new QGridLayout(this);
 	
-	mainLabel = new QLabel(QString("<h2>Select which file type to %1:</h2>").arg(func), this);
+	mainLabel = new QLabel(QString("<h2>Select which file type to insert:</h2>"), this);
 	
 	objSelector = new QComboBox(this);
 	objSelector->addItem("Generic Video File");
@@ -56,7 +56,7 @@ setObjectWidget::setObjectWidget(Qontainer<VideoFile> *container, const QString&
 	guestTeamText = new QLineEdit(this);
 	
 	cancelButton = new QPushButton("Cancel", this);
-	confirmButton = new QPushButton(func, this);
+	confirmButton = new QPushButton("Insert", this);
 	
 	layout->addWidget(mainLabel,0,0,1,4);
 	layout->addWidget(objSelector,1,0,1,3);
@@ -96,11 +96,19 @@ setObjectWidget::setObjectWidget(Qontainer<VideoFile> *container, const QString&
 	layout->setVerticalSpacing(20);
 	setLayout(layout);
 	
+	directorText->setEnabled(false);
+	lengthSpinbox->setEnabled(false);
+	episodesSpinbox->setEnabled(false);
+	animeFinCheckbox->setEnabled(false);
+	seasonsSpinbox->setEnabled(false);
+	serieFinCheckbox->setEnabled(false);
+	championshipText->setEnabled(false);
+	homeTeamText->setEnabled(false);
+	guestTeamText->setEnabled(false);
+	
 	connect(cancelButton, SIGNAL(clicked()), this, SLOT(exitWindow()));
 	connect(objSelector, SIGNAL(currentIndexChanged(int)), this, SLOT(disableFields()));
-	if(func=="Insert") connect(confirmButton, SIGNAL(clicked()), this, SLOT(confirmInsertion()));
-	if(func=="Remove") connect(confirmButton, SIGNAL(clicked()), this, SLOT(confirmRemoval()));
-	if(func=="Find") connect(confirmButton, SIGNAL(clicked()), this, SLOT(confirmSearch()));
+	connect(confirmButton, SIGNAL(clicked()), this, SLOT(confirmInsertion()));
 }
 
 void setObjectWidget::exitWindow() {
@@ -168,9 +176,36 @@ void setObjectWidget::disableFields() {
 }
 
 void setObjectWidget::confirmInsertion() {
-	VideoFile* vid = new VideoFile("prova", "prova", "prova", 2010);
+	VideoFile *vid;
+	switch(objSelector->currentIndex()) {
+		case 0: 
+			vid = new VideoFile(titleText->text().toStdString(), genreText->text().toStdString(),
+								nationText->text().toStdString(), yearSpinbox->value());
+			break;
+		case 1:
+			vid = new Movie(titleText->text().toStdString(), genreText->text().toStdString(),
+							nationText->text().toStdString(), yearSpinbox->value(),
+							directorText->text().toStdString(), lengthSpinbox->value());
+			break;
+		case 2:
+			vid = new Anime(titleText->text().toStdString(), genreText->text().toStdString(),
+							nationText->text().toStdString(), yearSpinbox->value(),
+							episodesSpinbox->value(), animeFinCheckbox->isChecked());
+			break;
+		case 3:
+			vid = new TvSerie(titleText->text().toStdString(), genreText->text().toStdString(),
+							nationText->text().toStdString(), yearSpinbox->value(),
+							seasonsSpinbox->value(), serieFinCheckbox->isChecked());
+			break;
+		case 4:
+			vid = new SportMatch(titleText->text().toStdString(), genreText->text().toStdString(),
+								nationText->text().toStdString(), yearSpinbox->value(),
+								championshipText->text().toStdString(), homeTeamText->text().toStdString(),
+								guestTeamText->text().toStdString());
+			break;
+	}
 	container->pushBack(vid);
-	//delete vid;
+	exitWindow();
 }
 
 void setObjectWidget::confirmRemoval() {
