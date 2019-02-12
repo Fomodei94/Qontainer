@@ -15,7 +15,7 @@ class Qontainer {
 		void resize(int new_size) {
 			any_type* new_array;
 			new_array = new any_type[new_size];
-			for(int i=0; i<arraySize; ++i) {
+			for(unsigned int i=0; i<arraySize; ++i) {
 				new_array[i] = collection[i];
 			}
 			delete[] collection;
@@ -85,11 +85,11 @@ class Qontainer {
 			else return false;
 		}
 		
-		bool pushBack(any_type new_element) {
+		bool pushBack(any_type *new_element) {
 			if(isFull()) resize(arraySize + 2);
 			
 			if(!isFull()){
-				collection[obj_count] = new_element;
+				collection[obj_count] = (*new_element);
 				obj_count++;
 				return true;
 			}
@@ -97,8 +97,8 @@ class Qontainer {
 			else return false; // Insertion Failed.
 		}
 		
-		void remove(const any_type& t) {	// Removes items of type t.
-			
+		void remove(const any_type& t) {	// Removes items of type t. SBAGLIATO !!!
+			// Maybe directly from xml ???
 		}
 		
 };

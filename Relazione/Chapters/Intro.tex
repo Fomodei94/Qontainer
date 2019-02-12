@@ -1,0 +1,22 @@
+\section{Introduction}
+
+\subsection{Compiling instructions}
+
+Project compilation requires a different project file (.pro) from the standard one. The right Qontainer.pro file is already given in the folder\footnote{In case of need, the command to generate the .pro file is: \textit{qmake -project "QT+=widgets" "CONFIG+=c++11"}}, so the only commands to invoke are \\ 
+\textit{qmake} \\
+\textit{make}
+
+\subsection{Development environment}
+\begin{itemize}
+\item Operating System: Manjaro Linux (4.14.94)
+\item C++ compiler: gcc 8.2
+\item Qt library: 5.12
+\item Editor: Geany 1.34
+\item IDE: Qt Creator
+\item Version control: git
+\item Repository hosting: \url{https://gitlab.com}
+\item Testing: lab OS on VirtualBox
+\end{itemize}
+
+\subsection{Abstract}
+The software represents an archive for video files with a graphical interface to show its content. It guarantees basic functionalities such as video files insertion, removal and search within the personal library, and provides also the persistence of data through save and load functionalities.

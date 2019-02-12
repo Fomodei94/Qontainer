@@ -43,7 +43,7 @@ void MainWindow::windowSelector() {
 }
 
 void MainWindow::openSelectWindow(const QString& func) {
-	objectWindow = new setObjectWidget(func);
+	objectWindow = new setObjectWidget(container, func);
 	(*objectWindow).show();
 }
 

@@ -1,6 +1,6 @@
 #include "TvSerie.h"
 
-TvSerie::TvSerie(string tit, string gen, string nat, int year, it seas, bool fin) : VideoFile(tit, gen, nat, year), seasons(seas), finished(fin) {
+TvSerie::TvSerie(string tit, string gen, string nat, int year, int seas, bool fin) : VideoFile(tit, gen, nat, year), seasons(seas), finished(fin) {
 	// CONTROLLI QUI !!!
 }
 

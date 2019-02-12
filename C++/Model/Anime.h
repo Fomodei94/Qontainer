@@ -14,7 +14,7 @@ class Anime: public VideoFile {
 		Anime(string tit="Unknown",
 			string gen="Unknown",
 			string nat="Unknown",
-			year=2000,
+			int year=2000,
 			int epis=1,
 			bool fin=true);	
 		

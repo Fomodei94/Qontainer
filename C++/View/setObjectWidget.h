@@ -9,10 +9,16 @@
 #include <QLineEdit>
 #include <QCheckBox>
 #include <QPushButton>
+#include "../Model/Qontainer.h"
+#include "../Model/VideoFile.h"
+#include <string>
 
 class setObjectWidget : public QWidget {
 	Q_OBJECT
 	private:
+
+		Qontainer<VideoFile> *container;
+
 		QGridLayout *layout;
 		
 		QComboBox *objSelector;
@@ -57,13 +63,14 @@ class setObjectWidget : public QWidget {
 					*confirmButton;
 		
 	public:
-		setObjectWidget(const QString& func, QWidget* parent = nullptr);
+		setObjectWidget(Qontainer<VideoFile> *container, const QString& func, QWidget* parent = nullptr);
 		
 	public slots:
 		void exitWindow();
+		void disableFields();
 		void confirmInsertion();
 		void confirmRemoval();
-		void confirmSearch();
+		void confirmSearch(); 
 };
 
 #endif // SETOBJECTWIDGET_H
