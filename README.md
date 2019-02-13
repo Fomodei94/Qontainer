@@ -12,6 +12,8 @@
 
 * Aggiunta QMessageBox per informare delle operazioni riuscite/fallite
 
+* Relazione (Vedi alcuni appunti su quaderno!)
+
 * Verifica finale di tutte le funzioni + prova in VM Ranzi VirtualBox
 
 * Polimorfismo ammerda
