@@ -1,6 +1,6 @@
 #include "searchByWidget.h"
 
-searchByWidget::searchByWidget(Qontainer<VideoFile> *container, bool remove, QWidget *parent) : QWidget(parent), container(container) {
+searchByWidget::searchByWidget(Qontainer<VideoFile*> *container, bool remove, QWidget *parent) : QWidget(parent), container(container) {
 	
 	QString functionLabel;
 	if(remove) functionLabel = "Remove";
@@ -69,19 +69,65 @@ void searchByWidget::exitWindow() {
 
 void searchByWidget::removeItems() {
 	
-	int elem_num = 0;
-	int* itemsIndex;
-	
-	if(titleRadioBtn->isChecked()) elem_num = container->searchByTitle(searchText->text(), itemsIndex);
-	if(genreRadioBtn->isChecked()) elem_num = container->searchByGenre(searchText->text(), itemsIndex);
-	if(nationRadioBtn->isChecked()) elem_num = container->searchByNation(searchText->text(), itemsIndex);
-	if(directorRadioBtn->isChecked()) elem_num = container->searchByDirector(searchText->text(), itemsIndex);
-	if(championshipRadioBtn->isChecked()) elem_num = container->searchByChampionship(searchText->text(), itemsIndex);
-	if(yearRadioBtn->isChecked()) elem_num = container->searchByYear(searchSpinbox->value(), itemsIndex);
-	if(episodesRadioBtn->isChecked()) elem_num = container->searchByEpisodes(searchSpinbox->value(), itemsIndex);
-	if(seasonsRadioBtn->isChecked()) elem_num = container->searchBySeasons(searchSpinbox->value(), itemsIndex);
+	if(titleRadioBtn->isChecked()) 
+		container->removeByTitle(searchText->text().toStdString());
+		
+	if(genreRadioBtn->isChecked()) 
+		container->removeByGenre(searchText->text().toStdString());
+		
+	if(nationRadioBtn->isChecked()) 
+		container->removeByNation(searchText->text().toStdString());
+		
+	if(yearRadioBtn->isChecked()) 
+		container->removeByYear(searchSpinbox->value());
+
+	if(directorRadioBtn->isChecked()) 
+		container->removeByDirector(searchText->text().toStdString());
+		
+	if(championshipRadioBtn->isChecked()) 
+		container->removeByChampionship(searchText->text().toStdString());
+		
+	if(episodesRadioBtn->isChecked()) 
+		container->removeByEpisodes(searchSpinbox->value());
+		
+	if(seasonsRadioBtn->isChecked()) 
+		container->removeBySeasons(searchSpinbox->value());
+		
+	exitWindow();
+
 }
 
 void searchByWidget::findItems() {
+	int elem_num = 0;
+	int* itemsIndex;
 	
-}
+	Qontainer<VideoFile*> *resultsToVisualize;
+	resultsToVisualize = container->returnFromPosition(itemsIndex, elem_num);
+	
+	if(titleRadioBtn->isChecked()) 
+		elem_num = container->searchByTitle(searchText->text().toStdString(), itemsIndex);
+		
+	if(genreRadioBtn->isChecked()) 
+		elem_num = container->searchByGenre(searchText->text().toStdString(), itemsIndex);
+		
+	if(nationRadioBtn->isChecked()) 
+		elem_num = container->searchByNation(searchText->text().toStdString(), itemsIndex);
+		
+	if(directorRadioBtn->isChecked()) 
+		elem_num = container->searchByDirector(searchText->text().toStdString(), itemsIndex);
+		
+	if(championshipRadioBtn->isChecked()) 
+		elem_num = container->searchByChampionship(searchText->text().toStdString(), itemsIndex);
+		
+	if(yearRadioBtn->isChecked()) 
+		elem_num = container->searchByYear(searchSpinbox->value(), itemsIndex);
+		
+	if(episodesRadioBtn->isChecked()) 
+		elem_num = container->searchByEpisodes(searchSpinbox->value(), itemsIndex);
+		
+	if(seasonsRadioBtn->isChecked()) 
+		elem_num = container->searchBySeasons(searchSpinbox->value(), itemsIndex);
+		
+	
+}	
+

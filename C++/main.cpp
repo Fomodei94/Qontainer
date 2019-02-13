@@ -4,7 +4,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Qontainer<VideoFile> *container = new Qontainer<VideoFile>();
+    Qontainer<VideoFile*> *container = new Qontainer<VideoFile*>();
     MainWindow w(container);
     w.show();
 

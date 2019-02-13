@@ -1,11 +1,15 @@
 #ifndef QONTAINER_H
 #define QONTAINER_H
 
+#include <iostream>
+#include <string>
 #include "VideoFile.h"
 #include "Movie.h"
 #include "Anime.h"
 #include "TvSerie.h"
 #include "SportMatch.h"
+
+using std::string;
 
 template <class any_type>
 
@@ -13,12 +17,12 @@ class Qontainer {
 	private:
 
 		// Private data fields:
-		any_type* collection;
+		any_type* collection;	// pointer to array of any_type pointers.
 		unsigned int arraySize;
 		unsigned int obj_count;
 
 		// Private Methods:
-		void resize(int new_size) {
+		void resize(unsigned int new_size) {
 			any_type* new_array;
 			new_array = new any_type[new_size];
 			for(unsigned int i=0; i<arraySize; ++i) {
@@ -27,12 +31,13 @@ class Qontainer {
 			delete[] collection;
 			collection = new_array;
 			arraySize = new_size;
+			std::cout<<"Resize of array!"<<std::endl;
 		}
 
 		void Shift(int index) {
-			any_type* it = collection + index;
-			for(; it<arraySize-1; ++it) {
-				*it = *(it+1);
+			//any_type *it = collection + index;
+			for(; index<obj_count-1; ++index) {
+				collection[index] = collection[index+1];
 			}
 		}
 
@@ -60,23 +65,23 @@ class Qontainer {
 		typedef any_type* iterator;
 
 		iterator begin() {
-			return collection;
+			return (*collection);
 		}
 
 		iterator end() {
-			return collection + obj_count;
+			return (*collection) + obj_count;
 		}
 
 		// Operators:
-		any_type& operator[] (int i) {
+		any_type& operator[] (unsigned int i) {
 			if(i>=0 && i<obj_count) {
 				return collection[i];
 			}
 			else throw("Out of bound element request");
 		}
 
-		Qontainer& operator->() {
-			return (*this);
+		any_type& operator->() {
+			return (*collection);
 		}
 
 		// Public Methods:
@@ -91,24 +96,22 @@ class Qontainer {
 			else return false;
 		}
 
-		bool pushBack(any_type *new_element) {
-			if(isFull()) resize(arraySize + 2);
+		void pushBack(any_type new_element) {
+			if(isFull()) resize(arraySize + 1);
 
 			if(!isFull()){
-				collection[obj_count] = (*new_element);
+				collection[obj_count] = new_element;
 				obj_count++;
-				return true;
+				std::cout<<"Inserimento avvenuto!"<<std::endl;
 			}
-
-			else return false; // Insertion Failed.
 		}
         
         // Search Methods:
         
-        int searchByTitle(const QString& tit, int* toReturn) {
+        int searchByTitle(const string& tit, int* toReturn) {
 			int ind=0;
-			for(unsigned int i=0; i<obj_count; ++i){
-				if(collection[i].getTitle() == tit) {
+			for(unsigned int i=0; i<obj_count; i++){
+				if(collection[i]->getTitle() == tit) {
 					toReturn[ind] = i;
 					ind++;
 				}
@@ -116,10 +119,10 @@ class Qontainer {
 			return ind;
 		}
 		
-		int searchByGenre(const QString& gen, int* toReturn) {
+		int searchByGenre(const string& gen, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
-				if(collection[i].getGenre() == gen) {
+				if(collection[i]->getGenre() == gen) {
 					toReturn[ind] = i;
 					ind++;
 				}
@@ -127,10 +130,10 @@ class Qontainer {
 			return ind;
 		}
 		
-		int searchByNation(const QString& nat, int* toReturn) {
+		int searchByNation(const string& nat, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
-				if(collection[i].getNation() == nat) {
+				if(collection[i]->getNation() == nat) {
 					toReturn[ind] = i;
 					ind++;
 				}
@@ -141,7 +144,7 @@ class Qontainer {
 		int searchByYear(const int& year, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
-				if(collection[i].getPublishingYear() == year) {
+				if(collection[i]->getPublishingYear() == year) {
 					toReturn[ind] = i;
 					ind++;
 				}
@@ -149,24 +152,28 @@ class Qontainer {
 			return ind;
 		}
 		
-		int searchByDirector(const QString& dir, int* toReturn) {
+		int searchByDirector(const string& dir, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
-				if(dynamic_cast<Movie&>(collection[i])) {
-					if(collection[i].getDirector() == dir) {
+				VideoFile* aux = collection[i];
+				Movie* dinam = dynamic_cast<Movie*>(aux);
+				if(dinam) {
+					if(dinam->getDirector() == dir) {
 						toReturn[ind] = i;
 						ind++;
 					}
 				}
-			return ind;
 			}
+			return ind;
 		}
 		
 		int searchByEpisodes(const int& epis, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
-				if(dynamic_cast<Anime&> (collection[i])) {
-					if(collection[i].getEpisodes() == epis) {
+				VideoFile* aux = collection[i];
+				Anime* dinam = dynamic_cast<Anime*>(aux); 
+				if(dinam) {
+					if(dinam->getEpisodes() == epis) {
 						toReturn[ind] = i;
 						ind++;
 					}
@@ -178,8 +185,10 @@ class Qontainer {
 		int searchBySeasons(const int& seas, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
-				if(dynamic_cast<TvSerie&> (collection[i])) {
-					if(collection[i].getSeasons() == seas) {
+				VideoFile* aux = collection[i];
+				TvSerie* dinam = dynamic_cast<TvSerie*>(aux);
+				if(dinam) {
+					if(dinam->getSeasons() == seas) {
 						toReturn[ind] = i;
 						ind++;
 					}
@@ -188,42 +197,54 @@ class Qontainer {
 			return ind;
 		}
 		
-		int searchByChampionship(const QString& champ, int* toReturn) {
+		int searchByChampionship(const string& champ, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
-				if(dynamic_cast<SportMatch&>(collection[i])) {
-					if(collection[i].getChampionship() == champ) {
+				VideoFile* aux = collection[i];
+				SportMatch* dinam = dynamic_cast<SportMatch*>(aux);
+				if(dinam) {
+					if(dinam->getChampionship() == champ) {
 						toReturn[ind] = i;
 						ind++;
 					}
 				}
-			return ind;
 			}
+			return ind;
+		}
+		
+		Qontainer<any_type>* returnFromPosition(int* itemsIndex, int num_elements) {
+			Qontainer<any_type> *toReturn;
+			for(int i = 0; i<num_elements; i++) {
+				int ind = itemsIndex[i];
+				toReturn->pushBack(collection[ind]);
+			}
+			return toReturn;
 		}
 		
 		// Remove Methods:
 		
-		void genericRemove(const int* pos, const int& numitems){
-			for (unsigned int i = numitems - 1; i==0; i-- ){
-				int position_to_delete = pos[i];
+		void genericRemove(int* toRemove, int numitems){
+			for (int i = numitems - 1; i>-1; i--) {
+				int position_to_delete = toRemove[i];
 				delete collection[position_to_delete];
 				Shift(position_to_delete);
+				obj_count--;
 			}
 		}
 		
-		void removeByTitle(const QString& tit){
+		void removeByTitle(const string& tit){
 			int toRemove[obj_count];
 			int numResults = searchByTitle(tit, toRemove);
 			genericRemove(toRemove, numResults);
 		}
 		
-		void removeByGenre(const QString& gen){
+		void removeByGenre(const string& gen){
 			int toRemove[obj_count];
 			int numResults = searchByGenre(gen, toRemove);
 			genericRemove(toRemove, numResults);
 		}
 		
-		void removeByNation(const QString& nat){
+		void removeByNation(const string& nat){
 			int toRemove[obj_count];
 			int numResults = searchByNation(nat, toRemove);
 			genericRemove(toRemove, numResults);
@@ -232,6 +253,30 @@ class Qontainer {
 		void removeByYear(const int& year){
 			int toRemove[obj_count];
 			int numResults = searchByYear(year, toRemove);
+			genericRemove(toRemove, numResults);
+		}
+		
+		void removeByDirector(const string& dir){
+			int toRemove[obj_count];
+			int numResults = searchByDirector(dir, toRemove);
+			genericRemove(toRemove, numResults);
+		}
+		
+		void removeByEpisodes(const int& epis){
+			int toRemove[obj_count];
+			int numResults = searchByEpisodes(epis, toRemove);
+			genericRemove(toRemove, numResults);
+		}
+		
+		void removeBySeasons(const int& seas){
+			int toRemove[obj_count];
+			int numResults = searchBySeasons(seas, toRemove);
+			genericRemove(toRemove, numResults);
+		}
+		
+		void removeByChampionship(const string& champ){
+			int toRemove[obj_count];
+			int numResults = searchByChampionship(champ, toRemove);
 			genericRemove(toRemove, numResults);
 		}
 

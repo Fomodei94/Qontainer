@@ -4,11 +4,12 @@
 #include <QMainWindow>
 #include <QGridLayout>
 #include <QWidget>
-#include <QTableView>
+#include <QTableWidget>
 #include <QPushButton>
 #include <QString>
 #include "../Model/Qontainer.h"
 #include "../Model/VideoFile.h"
+#include "tableWidget.h"
 #include "setObjectWidget.h"
 #include "searchByWidget.h"
 
@@ -16,10 +17,10 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 
 private:
-	Qontainer<VideoFile>* container;
+	Qontainer<VideoFile*> *container;
 	QGridLayout* winLayout;
 	QWidget* centralWidget;
-	QTableView* table;
+	tableWidget *table;
 	QPushButton	*insertButton,
 				*removeButton,
 				*findButton,
@@ -28,10 +29,12 @@ private:
 	searchByWidget	*searchWindow;
 
 public:
-    MainWindow(Qontainer<VideoFile> *container, QWidget *parent = 0);
+    MainWindow(Qontainer<VideoFile*> *container, QWidget *parent = 0);
     ~MainWindow();
     
 	void openSelectWindow(bool remove);
+	
+	
 
 public slots:
 	void windowSelector();

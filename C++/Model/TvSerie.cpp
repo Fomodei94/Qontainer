@@ -23,6 +23,6 @@ void TvSerie::setFinished(bool fin) {
 // PUBLIC METHODS:
 
 string TvSerie::printTvSerieStatus() const {
-	if(this->isFinished()) return "Ended";
+	if(this->isFinished()) return "Over";
 	else return "In Progress";
 }

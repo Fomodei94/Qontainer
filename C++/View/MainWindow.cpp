@@ -1,6 +1,6 @@
 #include "MainWindow.h"
 
-MainWindow::MainWindow(Qontainer<VideoFile> *container, QWidget *parent) : QMainWindow(parent), container(container) {
+MainWindow::MainWindow(Qontainer<VideoFile*> *container, QWidget *parent) : QMainWindow(parent), container(container) {
 	// Set MainWindow properties
 	setWindowTitle("Qontainer");
 	setMinimumSize(800,500);
@@ -11,7 +11,7 @@ MainWindow::MainWindow(Qontainer<VideoFile> *container, QWidget *parent) : QMain
 	setCentralWidget(centralWidget);
 	winLayout = new QGridLayout(centralWidget);
 
-	table = new QTableView(centralWidget);
+	table = new tableWidget(container, centralWidget);
 	insertButton = new QPushButton("Insert Item", centralWidget);
 	removeButton = new QPushButton("Remove Items", centralWidget );
 	findButton = new QPushButton("Find Items", centralWidget);

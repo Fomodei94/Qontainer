@@ -1,6 +1,7 @@
 #include "setObjectWidget.h"
+#include <iostream>
 
-setObjectWidget::setObjectWidget(Qontainer<VideoFile> *container, QWidget* parent) : QWidget(parent), container(container) {
+setObjectWidget::setObjectWidget(Qontainer<VideoFile*> *container, QWidget* parent) : QWidget(parent), container(container) {
 	setWindowTitle("Select item(s) type");
 	setFixedSize(380,700);
 	
@@ -205,6 +206,7 @@ void setObjectWidget::confirmInsertion() {
 			break;
 	}
 	container->pushBack(vid);
+	std::cout<<"Titolo Elemento inserito: "<<container[0]->getTitle()<<std::endl;
 	exitWindow();
 }
 
