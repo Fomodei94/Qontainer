@@ -1,6 +1,6 @@
 #include "setObjectWidget.h"
 
-setObjectWidget::setObjectWidget(Qontainer<VideoFile> *container, QWidget* parent) : QWidget(parent), container(container) {
+setObjectWidget::setObjectWidget(Qontainer<VideoFile*> *container, QWidget* parent) : QWidget(parent), container(container) {
 	setWindowTitle("Select item(s) type");
 	setFixedSize(380,700);
 	

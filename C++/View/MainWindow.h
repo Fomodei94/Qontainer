@@ -16,7 +16,7 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 
 private:
-	Qontainer<VideoFile>* container;
+	Qontainer<VideoFile*> *container;
 	QGridLayout* winLayout;
 	QWidget* centralWidget;
 	QTableView* table;
@@ -28,7 +28,7 @@ private:
 	searchByWidget	*searchWindow;
 
 public:
-    MainWindow(Qontainer<VideoFile> *container, QWidget *parent = 0);
+    MainWindow(Qontainer<VideoFile*> *container, QWidget *parent = 0);
     ~MainWindow();
     
 	void openSelectWindow(bool remove);

@@ -1,6 +1,6 @@
 #include "searchByWidget.h"
 
-searchByWidget::searchByWidget(Qontainer<VideoFile> *container, bool remove, QWidget *parent) : QWidget(parent), container(container) {
+searchByWidget::searchByWidget(Qontainer<VideoFile*> *container, bool remove, QWidget *parent) : QWidget(parent), container(container) {
 	
 	QString functionLabel;
 	if(remove) functionLabel = "Remove";

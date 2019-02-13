@@ -1,6 +1,7 @@
 #ifndef QONTAINER_H
 #define QONTAINER_H
 
+#include <QString>
 #include "VideoFile.h"
 #include "Movie.h"
 #include "Anime.h"
@@ -13,10 +14,15 @@ class Qontainer {
 	private:
 
 		// Private data fields:
-		any_type* collection;
+		deepPtr* collection;
 		unsigned int arraySize;
 		unsigned int obj_count;
-
+		
+		class deepPtr {
+			public:
+				deepPtr(new )
+		};
+		
 		// Private Methods:
 		void resize(int new_size) {
 			any_type* new_array;
@@ -70,9 +76,13 @@ class Qontainer {
 		// Operators:
 		any_type& operator[] (int i) {
 			if(i>=0 && i<obj_count) {
-				return collection[i];
+				return (*collection[i]);
 			}
 			else throw("Out of bound element request");
+		}
+		
+		any_type* operator*() {
+			return *collection;
 		}
 
 		Qontainer& operator->() {
@@ -91,16 +101,13 @@ class Qontainer {
 			else return false;
 		}
 
-		bool pushBack(any_type *new_element) {
+		void pushBack(const any_type& new_element) {
 			if(isFull()) resize(arraySize + 2);
 
-			if(!isFull()){
-				collection[obj_count] = (*new_element);
+			else if(!isFull()){
+				collection[obj_count] = new_element;
 				obj_count++;
-				return true;
 			}
-
-			else return false; // Insertion Failed.
 		}
         
         // Search Methods:
@@ -108,7 +115,7 @@ class Qontainer {
         int searchByTitle(const QString& tit, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
-				if(collection[i].getTitle() == tit) {
+				if(collection[i]->getTitle() == tit) {
 					toReturn[ind] = i;
 					ind++;
 				}
@@ -119,7 +126,7 @@ class Qontainer {
 		int searchByGenre(const QString& gen, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
-				if(collection[i].getGenre() == gen) {
+				if(collection[i]->getGenre() == gen) {
 					toReturn[ind] = i;
 					ind++;
 				}
@@ -130,7 +137,7 @@ class Qontainer {
 		int searchByNation(const QString& nat, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
-				if(collection[i].getNation() == nat) {
+				if(collection[i]->getNation() == nat) {
 					toReturn[ind] = i;
 					ind++;
 				}
@@ -141,7 +148,7 @@ class Qontainer {
 		int searchByYear(const int& year, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
-				if(collection[i].getPublishingYear() == year) {
+				if(collection[i]->getPublishingYear() == year) {
 					toReturn[ind] = i;
 					ind++;
 				}
@@ -152,8 +159,8 @@ class Qontainer {
 		int searchByDirector(const QString& dir, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
-				if(dynamic_cast<Movie&>(collection[i])) {
-					if(collection[i].getDirector() == dir) {
+				if(dynamic_cast<Movie*>((*collection)[i])) {
+					if(collection[i]->getDirector() == dir) {
 						toReturn[ind] = i;
 						ind++;
 					}
@@ -165,8 +172,8 @@ class Qontainer {
 		int searchByEpisodes(const int& epis, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
-				if(dynamic_cast<Anime&> (collection[i])) {
-					if(collection[i].getEpisodes() == epis) {
+				if(dynamic_cast<Anime*> (*collection[i])) {
+					if(collection[i]->getEpisodes() == epis) {
 						toReturn[ind] = i;
 						ind++;
 					}
@@ -178,8 +185,8 @@ class Qontainer {
 		int searchBySeasons(const int& seas, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
-				if(dynamic_cast<TvSerie&> (collection[i])) {
-					if(collection[i].getSeasons() == seas) {
+				if(dynamic_cast<TvSerie*> (*collection[i])) {
+					if(collection[i]->getSeasons() == seas) {
 						toReturn[ind] = i;
 						ind++;
 					}
@@ -191,8 +198,8 @@ class Qontainer {
 		int searchByChampionship(const QString& champ, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
-				if(dynamic_cast<SportMatch&>(collection[i])) {
-					if(collection[i].getChampionship() == champ) {
+				if(dynamic_cast<SportMatch*>(collection[i])) {
+					if(collection[i]->getChampionship() == champ) {
 						toReturn[ind] = i;
 						ind++;
 					}

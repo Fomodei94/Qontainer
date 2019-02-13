@@ -21,7 +21,7 @@ class setObjectWidget : public QWidget {
 	Q_OBJECT
 	private:
 
-		Qontainer<VideoFile> *container;
+		Qontainer<VideoFile*> *container;
 
 		QGridLayout *layout;
 		
@@ -67,7 +67,7 @@ class setObjectWidget : public QWidget {
 					*confirmButton;
 		
 	public:
-		setObjectWidget(Qontainer<VideoFile> *container, QWidget* parent = nullptr);
+		setObjectWidget(Qontainer<VideoFile*> *container, QWidget* parent = nullptr);
 		
 	public slots:
 		void exitWindow();
