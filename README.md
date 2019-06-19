@@ -1,19 +1,19 @@
 # QONTAINER TODO LIST
 
-* Xml Funzione di Load
+- [ ] Add polymorphism as there's no tomorrow
 
-* Xml funzione di Save
+- [ ] JSON Load function
 
-* Modifica di elementi (con rispettivo widget dedicato)
+- [ ] JSON Save function
 
-* Funzione di visualizzazione in table widget da elem del Qontainer
+- [ ] Elements modify function (with related custom widget)
 
-* Funzione di visualizzazione in table widget dopo ricerca
+- [ ] View items function in tableView or listView widget
 
-* Aggiunta QMessageBox per informare delle operazioni riuscite/fallite
+- [ ] View of search results function
 
-* Relazione (Vedi alcuni appunti su quaderno!)
+- [ ] Add QMessageBox to notify success/failure of operations
 
-* Verifica finale di tutte le funzioni + prova in VM Ranzi VirtualBox
+- [ ] Report/User-Manual (some notes in notebook)
 
-* Polimorfismo ammerda
+- [ ] Final SW verification of every feature & compile + run on Ranzi's VM
