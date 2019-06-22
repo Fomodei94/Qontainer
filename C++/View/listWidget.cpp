@@ -1,6 +1,6 @@
 #include "listWidget.h"
 
-listWidget::listWidget(Qontainer<deeptr<VideoFile>> *VideoContainer, QWidget *parent) : VideoContainer(VideoContainer) {
+listWidget::listWidget(Qontainer<VideoFile*> *VideoContainer, QWidget *parent) : VideoContainer(VideoContainer) {
 
   list = new QListWidget(this);
 

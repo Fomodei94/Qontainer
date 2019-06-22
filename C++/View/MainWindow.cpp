@@ -18,7 +18,7 @@ MainWindow::MainWindow(Qontainer<VideoFile*> *container, QWidget *parent) : QMai
 	saveButton = new QPushButton("Save Changes", centralWidget);
 
 	// Layout setting
-	winLayout->addWidget(table,0,0,1,5);
+	winLayout->addWidget(objectList,0,0,1,5);
 	winLayout->addWidget(insertButton,1,0);
 	winLayout->addWidget(removeButton,1,1);
 	winLayout->addWidget(findButton,1,2);

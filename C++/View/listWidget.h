@@ -5,18 +5,17 @@
 #include <QListWidget>
 #include <QScrollArea>
 #include "../Model/Qontainer.h"
-#include "../Model/DeepPtr.h"
 
 class listWidget : public QWidget {
   Q_OBJECT
 
   private:
-    Qontainer<deeptr<VideoFile>> *VideoContainer;
+    Qontainer<VideoFile*> *VideoContainer;
     QListWidget *list;
     QScrollArea *scroll;
 
   public:
-    listWidget(Qontainer<deeptr<VideoFile>> *VideoContainer, QWidget *parent =0);
+    listWidget(Qontainer<VideoFile*> *VideoContainer, QWidget *parent =0);
 
 };
 
