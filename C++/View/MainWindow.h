@@ -9,7 +9,7 @@
 #include <QString>
 #include "../Model/Qontainer.h"
 #include "../Model/VideoFile.h"
-#include "tableWidget.h"
+#include "listWidget.h"
 #include "setObjectWidget.h"
 #include "searchByWidget.h"
 
@@ -20,7 +20,7 @@ private:
 	Qontainer<VideoFile*> *container;
 	QGridLayout* winLayout;
 	QWidget* centralWidget;
-	tableWidget *table;
+	listWidget *objectList;
 	QPushButton	*insertButton,
 				*removeButton,
 				*findButton,
@@ -31,14 +31,14 @@ private:
 public:
     MainWindow(Qontainer<VideoFile*> *container, QWidget *parent = 0);
     ~MainWindow();
-    
+
 	void openSelectWindow(bool remove);
-	
-	
+
+
 
 public slots:
 	void windowSelector();
-	void openInsertWindow();	
+	void openInsertWindow();
 };
 
 #endif // MAINWINDOW_H
