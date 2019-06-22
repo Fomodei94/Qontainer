@@ -102,12 +102,12 @@ class Qontainer {
 			if(!isFull()){
 				collection[obj_count] = new_element;
 				obj_count++;
-				std::cout<<"Inserimento avvenuto!"<<std::endl;
+				std::cout<<"Element insertion went fine!"<<std::endl;
 			}
 		}
-        
+
         // Search Methods:
-        
+
         int searchByTitle(const string& tit, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; i++){
@@ -118,7 +118,7 @@ class Qontainer {
 			}
 			return ind;
 		}
-		
+
 		int searchByGenre(const string& gen, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
@@ -129,7 +129,7 @@ class Qontainer {
 			}
 			return ind;
 		}
-		
+
 		int searchByNation(const string& nat, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
@@ -140,7 +140,7 @@ class Qontainer {
 			}
 			return ind;
 		}
-		
+
 		int searchByYear(const int& year, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
@@ -151,7 +151,7 @@ class Qontainer {
 			}
 			return ind;
 		}
-		
+
 		int searchByDirector(const string& dir, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
@@ -166,12 +166,12 @@ class Qontainer {
 			}
 			return ind;
 		}
-		
+
 		int searchByEpisodes(const int& epis, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
 				VideoFile* aux = collection[i];
-				Anime* dinam = dynamic_cast<Anime*>(aux); 
+				Anime* dinam = dynamic_cast<Anime*>(aux);
 				if(dinam) {
 					if(dinam->getEpisodes() == epis) {
 						toReturn[ind] = i;
@@ -181,7 +181,7 @@ class Qontainer {
 			}
 			return ind;
 		}
-		
+
 		int searchBySeasons(const int& seas, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
@@ -196,7 +196,7 @@ class Qontainer {
 			}
 			return ind;
 		}
-		
+
 		int searchByChampionship(const string& champ, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
@@ -211,7 +211,7 @@ class Qontainer {
 			}
 			return ind;
 		}
-		
+
 		Qontainer<any_type>* returnFromPosition(int* itemsIndex, int num_elements) {
 			Qontainer<any_type> *toReturn;
 			for(int i = 0; i<num_elements; i++) {
@@ -220,9 +220,9 @@ class Qontainer {
 			}
 			return toReturn;
 		}
-		
+
 		// Remove Methods:
-		
+
 		void genericRemove(int* toRemove, int numitems){
 			for (int i = numitems - 1; i>-1; i--) {
 				int position_to_delete = toRemove[i];
@@ -231,49 +231,49 @@ class Qontainer {
 				obj_count--;
 			}
 		}
-		
+
 		void removeByTitle(const string& tit){
 			int toRemove[obj_count];
 			int numResults = searchByTitle(tit, toRemove);
 			genericRemove(toRemove, numResults);
 		}
-		
+
 		void removeByGenre(const string& gen){
 			int toRemove[obj_count];
 			int numResults = searchByGenre(gen, toRemove);
 			genericRemove(toRemove, numResults);
 		}
-		
+
 		void removeByNation(const string& nat){
 			int toRemove[obj_count];
 			int numResults = searchByNation(nat, toRemove);
 			genericRemove(toRemove, numResults);
 		}
-				
+
 		void removeByYear(const int& year){
 			int toRemove[obj_count];
 			int numResults = searchByYear(year, toRemove);
 			genericRemove(toRemove, numResults);
 		}
-		
+
 		void removeByDirector(const string& dir){
 			int toRemove[obj_count];
 			int numResults = searchByDirector(dir, toRemove);
 			genericRemove(toRemove, numResults);
 		}
-		
+
 		void removeByEpisodes(const int& epis){
 			int toRemove[obj_count];
 			int numResults = searchByEpisodes(epis, toRemove);
 			genericRemove(toRemove, numResults);
 		}
-		
+
 		void removeBySeasons(const int& seas){
 			int toRemove[obj_count];
 			int numResults = searchBySeasons(seas, toRemove);
 			genericRemove(toRemove, numResults);
 		}
-		
+
 		void removeByChampionship(const string& champ){
 			int toRemove[obj_count];
 			int numResults = searchByChampionship(champ, toRemove);

@@ -4,18 +4,18 @@
 setObjectWidget::setObjectWidget(Qontainer<VideoFile*> *container, QWidget* parent) : QWidget(parent), container(container) {
 	setWindowTitle("Select item(s) type");
 	setFixedSize(380,700);
-	
+
 	layout = new QGridLayout(this);
-	
+
 	mainLabel = new QLabel(QString("<h2>Select which file type to insert:</h2>"), this);
-	
+
 	objSelector = new QComboBox(this);
 	objSelector->addItem("Generic Video File");
 	objSelector->addItem("Movie");
 	objSelector->addItem("Anime");
 	objSelector->addItem("Tv Serie");
 	objSelector->addItem("Sport Match");
-	
+
 	genericVideoLabel = new QLabel("<h3>Generic video file info:</h3>", this);
 	titleLabel = new QLabel("Title:", this);
 	titleText = new QLineEdit(this);
@@ -26,28 +26,28 @@ setObjectWidget::setObjectWidget(Qontainer<VideoFile*> *container, QWidget* pare
 	yearLabel = new QLabel("Year:", this);
 	yearSpinbox = new QSpinBox(this);
 	yearSpinbox-> setRange(1890,9999);
-	
+
 	movieLabel = new QLabel("<h3>Movie specific info:</h3>", this);
 	directorLabel = new QLabel("Director:", this);
 	directorText = new QLineEdit(this);
 	lengthLabel = new QLabel("Length (min):", this);
 	lengthSpinbox = new QSpinBox(this);
 	lengthSpinbox->setRange(1,999);
-	
+
 	animeLabel = new QLabel("<h3>Anime specific info:</h3>", this);
 	episodesLabel = new QLabel("Episodes number:", this);
 	episodesSpinbox = new QSpinBox(this);
 	episodesSpinbox-> setRange(1,999);
 	animeFinLabel = new QLabel("It's over:", this);
 	animeFinCheckbox = new QCheckBox(this);
-	
+
 	tvSerieLabel = new QLabel("<h3>Tv serie specific info:</h3>", this);
 	seasonsLabel = new QLabel("Seasons number:", this);
 	seasonsSpinbox = new QSpinBox(this);
 	seasonsSpinbox->setRange(1,99);
 	serieFinLabel = new QLabel("It's over:", this);
 	serieFinCheckbox = new QCheckBox(this);
-	
+
 	matchLabel = new QLabel("<h3>Sport match specific info:</h3>", this);
 	championshipLabel = new QLabel("Championship:", this);
 	championshipText = new QLineEdit(this);
@@ -55,10 +55,10 @@ setObjectWidget::setObjectWidget(Qontainer<VideoFile*> *container, QWidget* pare
 	homeTeamText = new QLineEdit(this);
 	guestTeamLabel = new QLabel("Guest team:", this);
 	guestTeamText = new QLineEdit(this);
-	
+
 	cancelButton = new QPushButton("Cancel", this);
 	confirmButton = new QPushButton("Insert", this);
-	
+
 	layout->addWidget(mainLabel,0,0,1,4);
 	layout->addWidget(objSelector,1,0,1,3);
 	layout->addWidget(genericVideoLabel,2,0,1,4);
@@ -96,7 +96,7 @@ setObjectWidget::setObjectWidget(Qontainer<VideoFile*> *container, QWidget* pare
 	layout->addWidget(confirmButton,14,3,1,2);
 	layout->setVerticalSpacing(20);
 	setLayout(layout);
-	
+
 	directorText->setEnabled(false);
 	lengthSpinbox->setEnabled(false);
 	episodesSpinbox->setEnabled(false);
@@ -106,7 +106,7 @@ setObjectWidget::setObjectWidget(Qontainer<VideoFile*> *container, QWidget* pare
 	championshipText->setEnabled(false);
 	homeTeamText->setEnabled(false);
 	guestTeamText->setEnabled(false);
-	
+
 	connect(cancelButton, SIGNAL(clicked()), this, SLOT(exitWindow()));
 	connect(objSelector, SIGNAL(currentIndexChanged(int)), this, SLOT(disableFields()));
 	connect(confirmButton, SIGNAL(clicked()), this, SLOT(confirmInsertion()));
@@ -138,7 +138,7 @@ void setObjectWidget::disableFields() {
 			serieFinCheckbox->setEnabled(false);
 			championshipText->setEnabled(false);
 			homeTeamText->setEnabled(false);
-			guestTeamText->setEnabled(false);			
+			guestTeamText->setEnabled(false);
 			break;
 		case 2:
 			directorText->setEnabled(false);
@@ -149,7 +149,7 @@ void setObjectWidget::disableFields() {
 			serieFinCheckbox->setEnabled(false);
 			championshipText->setEnabled(false);
 			homeTeamText->setEnabled(false);
-			guestTeamText->setEnabled(false);		
+			guestTeamText->setEnabled(false);
 			break;
 		case 3:
 			directorText->setEnabled(false);
@@ -179,7 +179,7 @@ void setObjectWidget::disableFields() {
 void setObjectWidget::confirmInsertion() {
 	VideoFile *vid;
 	switch(objSelector->currentIndex()) {
-		case 0: 
+		case 0:
 			vid = new VideoFile(titleText->text().toStdString(), genreText->text().toStdString(),
 								nationText->text().toStdString(), yearSpinbox->value());
 			break;
@@ -206,14 +206,14 @@ void setObjectWidget::confirmInsertion() {
 			break;
 	}
 	container->pushBack(vid);
-	std::cout<<"Titolo Elemento inserito: "<<container[0]->getTitle()<<std::endl;
+	std::cout<<"Element title: "<<container[0]->getTitle()<<std::endl;
 	exitWindow();
 }
 
 void setObjectWidget::confirmRemoval() {
-	
+
 }
 
 void setObjectWidget::confirmSearch() {
-	
+
 }
