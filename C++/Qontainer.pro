@@ -31,7 +31,7 @@ SOURCES += \
         View/MainWindow.cpp \
 	View/setObjectWidget.cpp \
 	View/searchByWidget.cpp \
-	View/tableWidget.cpp \
+	View/listWidget.cpp \
 
 HEADERS += \
 	Model/VideoFile.h \
@@ -42,7 +42,7 @@ HEADERS += \
         View/MainWindow.h \
 	View/setObjectWidget.h \
 	View/searchByWidget.h \
-	View/tableWidget.h \
+	View/listWidget.h \
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
