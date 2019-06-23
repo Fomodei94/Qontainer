@@ -11,7 +11,9 @@ MainWindow::MainWindow(Qontainer<VideoFile*> *container, QWidget *parent) : QMai
 	setCentralWidget(centralWidget);
 	winLayout = new QGridLayout(centralWidget);
 
-	objectList = new listWidget(container, centralWidget);
+	objectList = new QListWidget(centralWidget);
+	scrollArea = new QScrollArea;
+	scrollArea->setWidget(objectList);
 	insertButton = new QPushButton("Insert Item", centralWidget);
 	removeButton = new QPushButton("Remove Items", centralWidget );
 	findButton = new QPushButton("Find Items", centralWidget);

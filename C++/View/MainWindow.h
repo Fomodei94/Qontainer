@@ -4,12 +4,21 @@
 #include <QMainWindow>
 #include <QGridLayout>
 #include <QWidget>
-#include <QTableWidget>
+#include <QListWidget>
+#include <QScrollArea>
 #include <QPushButton>
 #include <QString>
+#include <QFile>
+#include <QFileDialog>
+#include <QScrollArea>
+#include <QByteArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonValue>
+#include <QJsonArray>
+#include <QTextStream>
 #include "../Model/Qontainer.h"
 #include "../Model/VideoFile.h"
-#include "listWidget.h"
 #include "setObjectWidget.h"
 #include "searchByWidget.h"
 
@@ -20,7 +29,8 @@ private:
 	Qontainer<VideoFile*> *container;
 	QGridLayout* winLayout;
 	QWidget* centralWidget;
-	listWidget *objectList;
+	QListWidget *objectList;
+  QScrollArea *scrollArea;
 	QPushButton	*insertButton,
 				*removeButton,
 				*findButton,
@@ -34,11 +44,16 @@ public:
 
 	void openSelectWindow(bool remove);
 
-
-
+/*
+private slots:
+    bool fillFromFile(QString);
+    bool saveToFile(Cvector<deeptr<ship> >, QString)const;
+    void buildListBy(QString = "",QString = "",QString = "");
+*/
 public slots:
 	void windowSelector();
 	void openInsertWindow();
+
 };
 
 #endif // MAINWINDOW_H
