@@ -43,7 +43,7 @@ class Qontainer {
 
 	public:
 		// Constructors:
-		Qontainer(unsigned int s=2) : collection(new any_type[s]), arraySize(s), obj_count(0) {
+		Qontainer(unsigned int s=3) : collection(new any_type[s]), arraySize(s), obj_count(0) {
 
 		}
 
@@ -53,11 +53,11 @@ class Qontainer {
 		}
 
 		// Getters:
-		int getSize() const {
+		unsigned int getSize() const {
 			return arraySize;
 		}
 
-		int getObjCount() const {
+		unsigned int getObjCount() const {
 			return obj_count;
 		}
 
@@ -73,14 +73,14 @@ class Qontainer {
 		}
 
 		// Operators:
-		any_type& operator[] (unsigned int i) {
+		any_type operator[](int i) {
 			if(i>=0 && i<obj_count) {
 				return collection[i];
 			}
 			else throw("Out of bound element request");
 		}
 
-		any_type& operator->() {
+		any_type operator->() {
 			return (*collection);
 		}
 
@@ -108,9 +108,11 @@ class Qontainer {
 			if(isFull()) resize(arraySize + 1);
 
 			if(!isFull()){
+				std::cout<<"ObjCount = "<<obj_count<<std::endl;
 				collection[obj_count] = new_element;
 				obj_count++;
 				std::cout<<"Element insertion went fine!"<<std::endl;
+				std::cout<<"ObjCount = "<<obj_count<<std::endl;
 			}
 		}
 
