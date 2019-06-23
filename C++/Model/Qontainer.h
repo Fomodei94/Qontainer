@@ -86,6 +86,14 @@ class Qontainer {
 
 		// Public Methods:
 
+		void clear() {
+		        any_type* aux = nullptr;
+		        delete [] collection;
+		        collection = aux;
+		        obj_count = 0;
+		        arraySize = 0;
+		    }
+
 		bool isEmpty() const {
 			if(obj_count) return false;
 			else return true;
