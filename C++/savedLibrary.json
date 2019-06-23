@@ -33,20 +33,11 @@
 	    "length": 151
         },
         {
-            "title": "The departed",
-            "genre": "Crime",
-            "publishingDate": 2006,
-            "nation": "Usa",
-            "type": "Movie",
-	    "director": "Martin Scorsese",
-	    "length": 151
-        },
-        {
             "title": "Silver linings playbook",
             "genre": "Drama",
             "publishingDate": 2012,
             "nation": "Usa",
-            "type": "movie",
+            "type": "Movie",
 	    "director": "David Russel",
 	    "length": 122
         },
@@ -73,7 +64,7 @@
             "genre": "Football game",
             "publishingDate": 2006,
             "nation": "Germany",
-            "type": "Match",
+            "type": "SportMatch",
 	    "championship": "World Cup",
 	    "homeTeam": "Italy",
 	    "guestTeam": "France"
@@ -83,7 +74,7 @@
             "genre": "Basketball game",
             "publishingDate": 2010,
             "nation": "Usa",
-            "type": "Match",
+            "type": "SportMatch",
 	    "championship": "NBA",
 	    "homeTeam": "L.A. Lakers",
 	    "guestTeam": "Boston Celtics"
