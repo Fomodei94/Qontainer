@@ -4,7 +4,9 @@
 #include <QMainWindow>
 #include <QGridLayout>
 #include <QWidget>
+#include <QLabel>
 #include <QListWidget>
+#include <QListWidgetItem>
 #include <QScrollArea>
 #include <QPushButton>
 #include <QString>
@@ -29,11 +31,14 @@ private:
 	Qontainer<VideoFile*> *container;
 	QGridLayout* winLayout;
 	QWidget* centralWidget;
+  QLabel *listTitle;
 	QListWidget *objectList;
   QScrollArea *scrollArea;
 	QPushButton	*insertButton,
 				*removeButton,
 				*findButton,
+        *refreshButton,
+        *loadButton,
 				*saveButton;
 	setObjectWidget *objectWindow;
 	searchByWidget	*searchWindow;
@@ -48,11 +53,15 @@ public:
 private slots:
     bool fillFromFile(QString);
     bool saveToFile(Cvector<deeptr<ship> >, QString)const;
-    void buildListBy(QString = "",QString = "",QString = "");
 */
+
+signals:
+  void listUpdated();
+
 public slots:
 	void windowSelector();
 	void openInsertWindow();
+  void showListFromContainer();
 
 };
 
