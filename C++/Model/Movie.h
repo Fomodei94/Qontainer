@@ -6,8 +6,8 @@
 class Movie: public VideoFile {
 	private:
 		string director;
-		int lenght;
-	
+		int length;
+
 	public:
 
 		//CONSTRUCTORS:
@@ -16,16 +16,16 @@ class Movie: public VideoFile {
 			string nat="Unknown",
 			int year=2000,
 			string dir="Unknown",
-			int lenght=0);
+			int length=0);
 
 		//GETTERS:
 		string getDirector() const;
-		int getLenght() const;
-		
+		int getLength() const;
+
 		//SETTERS:
 		void setDirector(string dir);
-		void setLenght(int len);
-	
+		void setLength(int len);
+
 };
 
 #endif
