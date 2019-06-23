@@ -1,0 +1,101 @@
+{
+    "VideoFile": [
+        {
+            "title": "Summer Holidays",
+            "genre": "Personal holiday film",
+            "publishingDate": 2018,
+            "nation": "Italy",
+            "type": "VideoFile"
+        },
+        {
+           "title": "School trip",
+            "genre": "Amateur movie",
+            "publishingDate": 2016,
+            "nation": "Ireland",
+            "type": "VideoFile"
+        },
+        {
+            "title": "Deadpool",
+            "genre": "Superheroes",
+            "publishingDate": 2016,
+            "nation": "Usa",
+            "type": "Movie",
+	    "director": "Tim Miller",
+	    "length": 108
+        },
+        {
+            "title": "The departed",
+            "genre": "Crime",
+            "publishingDate": 2006,
+            "nation": "Usa",
+            "type": "Movie",
+	    "director": "Martin Scorsese",
+	    "length": 151
+        },
+        {
+            "title": "The departed",
+            "genre": "Crime",
+            "publishingDate": 2006,
+            "nation": "Usa",
+            "type": "Movie",
+	    "director": "Martin Scorsese",
+	    "length": 151
+        },
+        {
+            "title": "Silver linings playbook",
+            "genre": "Drama",
+            "publishingDate": 2012,
+            "nation": "Usa",
+            "type": "movie",
+	    "director": "David Russel",
+	    "length": 122
+        },
+        {
+            "title": "The big bang theory",
+            "genre": "Comedy",
+            "publishingDate": 2007,
+            "nation": "Usa",
+            "type": "TvSerie",
+	    "seasons": 12,
+	    "finished": true
+        },
+        {
+            "title": "Friends",
+            "genre": "Comedy",
+            "publishingDate": 1994,
+            "nation": "Usa",
+            "type": "TvSerie",
+	    "seasons": 10,
+	    "finished": true
+        },
+        {
+            "title": "World Cup final",
+            "genre": "Football game",
+            "publishingDate": 2006,
+            "nation": "Germany",
+            "type": "Match",
+	    "championship": "World Cup",
+	    "homeTeam": "Italy",
+	    "guestTeam": "France"
+        },
+        {
+            "title": "NBA final",
+            "genre": "Basketball game",
+            "publishingDate": 2010,
+            "nation": "Usa",
+            "type": "Match",
+	    "championship": "NBA",
+	    "homeTeam": "L.A. Lakers",
+	    "guestTeam": "Boston Celtics"
+        },
+        {
+            "title": "Death Note",
+            "genre": "Fantasy thriller",
+            "publishingDate": 2006,
+            "nation": "Japan",
+            "type": "Anime",
+	    "episodes": 37,
+	    "finished": true
+        }
+    ]
+}
