@@ -1,92 +1,87 @@
 {
     "VideoFile": [
         {
-            "title": "Summer Holidays",
-            "genre": "Personal holiday film",
-            "publishingDate": 2018,
-            "nation": "Italy",
-            "type": "VideoFile"
-        },
-        {
-           "title": "School trip",
-            "genre": "Amateur movie",
-            "publishingDate": 2016,
-            "nation": "Ireland",
-            "type": "VideoFile"
-        },
-        {
-            "title": "Deadpool",
+            "director": "Tim Miller",
             "genre": "Superheroes",
+            "length": 108,
+            "nation": "Usa",
             "publishingDate": 2016,
-            "nation": "Usa",
-            "type": "Movie",
-	    "director": "Tim Miller",
-	    "length": 108
+            "title": "Deadpool",
+            "type": "Movie"
         },
         {
-            "title": "The departed",
+            "director": "Martin Scorsese",
             "genre": "Crime",
-            "publishingDate": 2006,
+            "length": 151,
             "nation": "Usa",
-            "type": "Movie",
-	    "director": "Martin Scorsese",
-	    "length": 151
+            "publishingDate": 2006,
+            "title": "The departed",
+            "type": "Movie"
         },
         {
-            "title": "Silver linings playbook",
+            "director": "David Russel",
             "genre": "Drama",
+            "length": 122,
+            "nation": "Usa",
             "publishingDate": 2012,
-            "nation": "Usa",
-            "type": "Movie",
-	    "director": "David Russel",
-	    "length": 122
+            "title": "Silver linings playbook",
+            "type": "Movie"
         },
         {
-            "title": "The big bang theory",
+            "finished": true,
             "genre": "Comedy",
+            "nation": "Usa",
             "publishingDate": 2007,
-            "nation": "Usa",
-            "type": "TvSerie",
-	    "seasons": 12,
-	    "finished": true
+            "seasons": 12,
+            "title": "The big bang theory",
+            "type": "TvSerie"
         },
         {
-            "title": "Friends",
+            "finished": true,
             "genre": "Comedy",
+            "nation": "Usa",
             "publishingDate": 1994,
-            "nation": "Usa",
-            "type": "TvSerie",
-	    "seasons": 10,
-	    "finished": true
+            "seasons": 10,
+            "title": "Friends",
+            "type": "TvSerie"
         },
         {
-            "title": "World Cup final",
+            "championship": "World Cup",
             "genre": "Football game",
-            "publishingDate": 2006,
+            "guestTeam": "France",
+            "homeTeam": "Italy",
             "nation": "Germany",
-            "type": "SportMatch",
-	    "championship": "World Cup",
-	    "homeTeam": "Italy",
-	    "guestTeam": "France"
-        },
-        {
-            "title": "NBA final",
-            "genre": "Basketball game",
-            "publishingDate": 2010,
-            "nation": "Usa",
-            "type": "SportMatch",
-	    "championship": "NBA",
-	    "homeTeam": "L.A. Lakers",
-	    "guestTeam": "Boston Celtics"
-        },
-        {
-            "title": "Death Note",
-            "genre": "Fantasy thriller",
             "publishingDate": 2006,
+            "title": "World Cup final",
+            "type": "SportMatch"
+        },
+        {
+            "championship": "NBA",
+            "genre": "Basketball game",
+            "guestTeam": "Boston Celtics",
+            "homeTeam": "L.A. Lakers",
+            "nation": "Usa",
+            "publishingDate": 2010,
+            "title": "NBA final",
+            "type": "SportMatch"
+        },
+        {
+            "episodes": 37,
+            "finished": true,
+            "genre": "Fantasy thriller",
             "nation": "Japan",
-            "type": "Anime",
-	    "episodes": 37,
-	    "finished": true
+            "publishingDate": 2006,
+            "title": "Death Note",
+            "type": "Anime"
+        },
+        {
+            "finished": false,
+            "genre": "Crime",
+            "nation": "Spain",
+            "publishingDate": 2017,
+            "seasons": 3,
+            "title": "La casa de papel",
+            "type": "TvSerie"
         }
     ]
 }

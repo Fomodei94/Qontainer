@@ -8,18 +8,28 @@ modifyWidget::modifyWidget(VideoFile *vid, QWidget* parent) : QWidget(parent), v
 
 	layout = new QGridLayout(this);
 
+  const QString windowStyle = "background-color:#3a3a3a; color:#FFFFFF;";
+	const QString buttonStyle = "background-color:#2a2a2a; color:#FFFFFF;border: 0.5px solid #AAAAAA; padding: 1px;";
+  const QString disabled = "QWidget:disabled{border: 1px solid #DD0000;}QLineEdit{border: 1px solid #00DD00;}QSpinBox{border: 1px solid #00DD00;}QCheckBox{border: 1px solid #00DD00;}";
+
+  this->setStyleSheet(windowStyle);
+
 	mainLabel = new QLabel(QString("<h2>View/Modify item</h2>"), this);
 
 	genericVideoLabel = new QLabel("<h3>Generic video file info:</h3>", this);
 	titleLabel = new QLabel("Title:", this);
 	titleText = new QLineEdit(this);
+  titleText->setStyleSheet(disabled);
 	genreLabel = new QLabel("Genre:", this);
 	genreText = new QLineEdit(this);
+  genreText->setStyleSheet(disabled);
 	nationLabel = new QLabel("Nation:", this);
 	nationText = new QLineEdit(this);
+  nationText->setStyleSheet(disabled);
 	yearLabel = new QLabel("Year:", this);
 	yearSpinbox = new QSpinBox(this);
 	yearSpinbox-> setRange(1890,9999);
+  yearSpinbox->setStyleSheet(disabled);
 
 	movieLabel = new QLabel("<h3>Movie specific info:</h3>", this);
 	directorLabel = new QLabel("Director:", this);
@@ -51,7 +61,9 @@ modifyWidget::modifyWidget(VideoFile *vid, QWidget* parent) : QWidget(parent), v
 	guestTeamText = new QLineEdit(this);
 
 	cancelButton = new QPushButton("Cancel", this);
+  cancelButton->setStyleSheet(buttonStyle);
 	confirmButton = new QPushButton("Modify item", this);
+  confirmButton->setStyleSheet(buttonStyle);
 
 	layout->addWidget(mainLabel,0,0,1,4);
 	//layout->addWidget(objSelector,1,0,1,3);
@@ -92,14 +104,23 @@ modifyWidget::modifyWidget(VideoFile *vid, QWidget* parent) : QWidget(parent), v
 	setLayout(layout);
 
 	directorText->setEnabled(false);
+  directorText->setStyleSheet(disabled);
 	lengthSpinbox->setEnabled(false);
+  lengthSpinbox->setStyleSheet(disabled);
 	episodesSpinbox->setEnabled(false);
+  episodesSpinbox->setStyleSheet(disabled);
 	animeFinCheckbox->setEnabled(false);
+  animeFinCheckbox->setStyleSheet(disabled);
 	seasonsSpinbox->setEnabled(false);
+  seasonsSpinbox->setStyleSheet(disabled);
 	serieFinCheckbox->setEnabled(false);
+  serieFinCheckbox->setStyleSheet(disabled);
 	championshipText->setEnabled(false);
+  championshipText->setStyleSheet(disabled);
 	homeTeamText->setEnabled(false);
+  homeTeamText->setStyleSheet(disabled);
 	guestTeamText->setEnabled(false);
+  guestTeamText->setStyleSheet(disabled);
 
   activateFields();
   fillFields();
@@ -137,6 +158,7 @@ void modifyWidget::activateFields() {
 }
 
 void modifyWidget::fillFields() const {
+
   QString tit = tit.fromStdString(vid->getTitle());
   titleText->setText(tit);
   QString gen = gen.fromStdString(vid->getGenre());

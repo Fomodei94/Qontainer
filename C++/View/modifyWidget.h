@@ -18,7 +18,8 @@
 
 class modifyWidget : public QWidget {
 	Q_OBJECT
-	private:
+
+  private:
 
 		VideoFile *vid;
 
@@ -63,7 +64,7 @@ class modifyWidget : public QWidget {
 		QPushButton	*cancelButton,
 					*confirmButton;
 
-	public:
+  public:
 		modifyWidget(VideoFile* vid, QWidget* parent = nullptr);
 
 	signals:
