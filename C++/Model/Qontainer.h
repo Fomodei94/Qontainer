@@ -118,7 +118,7 @@ class Qontainer {
 
         // Search Methods:
 
-        int searchByTitle(const string& tit, int* toReturn) {
+    int searchByTitle(const string& tit, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; i++){
 				if(collection[i]->getTitle() == tit) {
@@ -224,7 +224,7 @@ class Qontainer {
 
 		Qontainer<any_type>* returnFromPosition(int* itemsIndex, int num_elements) {
 			Qontainer<any_type> *toReturn;
-			for(int i = 0; i<num_elements; i++) {
+			for(unsigned int i = 0; i<num_elements; i++) {
 				int ind = itemsIndex[i];
 				toReturn->pushBack(collection[ind]);
 			}
