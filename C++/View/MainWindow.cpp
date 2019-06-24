@@ -9,8 +9,6 @@ MainWindow::MainWindow(Qontainer<VideoFile*> *container, QWidget *parent) : QMai
 	const QString windowStyle = "background-color:#3a3a3a; color:#FFFFFF;";
 	const QString buttonStyle = "background-color:#2a2a2a; color:#FFFFFF;border: 0.5px solid #AAAAAA; padding: 1px;";
 
-	//container = new Qontainer<VideoFile>();
-
 	centralWidget = new QWidget(this);
 	centralWidget->setStyleSheet(windowStyle);
 	setCentralWidget(centralWidget);
@@ -51,14 +49,19 @@ MainWindow::MainWindow(Qontainer<VideoFile*> *container, QWidget *parent) : QMai
 	showListFromContainer();
 
 	QListWidgetItem* toBeModified;
+	findResult = new Qontainer<VideoFile*>();
+
 
 	// Connect Signals:
 	connect(insertButton, SIGNAL(clicked()), this, SLOT(openInsertWindow()));
 	connect(removeButton, SIGNAL(clicked()), this, SLOT(windowSelector()));
 	connect(findButton, SIGNAL(clicked()), this, SLOT(windowSelector()));
-	//connect(objectList, SIGNAL(itemDoubleClicked(QListWidgetItem* item)), this, SLOT(openModifyWindow(QListWidgetItem* item)));
-	//connect(objectList, SIGNAL(itemDoubleClicked(QListWidgetItem)), this, openModifyWindow(QListWidgetItem));
+	connect(objectList, SIGNAL(itemDoubleClicked(QListWidgetItem*)), this, SLOT(openModifyWindow(QListWidgetItem*)));
 	connect(refreshButton, SIGNAL(clicked()), this, SLOT(showListFromContainer()));
+	connect(saveButton, SIGNAL(clicked()), this, SLOT (saveContainerToFile()));
+	connect(loadButton, SIGNAL(clicked()), this, SLOT(showFromFile()));
+
+
 
 }
 
@@ -73,24 +76,28 @@ void MainWindow::windowSelector() {
 		if(button == removeButton) openSelectWindow(true);
 		else if(button == findButton) openSelectWindow(false);
 		}
-	else throw("Bad Signal/Slot combo");
+
 }
 
 void MainWindow::openModifyWindow(QListWidgetItem* item) {
 	VideoFile *vid;
-	QString text(item->text());
+	QString text = item->text();
 	for(unsigned int i=0; i < container->getObjCount(); i++) {
 		if((*container)[i]->getTitle() == text.toStdString()) {
 			vid = (*container)[i];
 			break;
 		}
 	}
+
 	modifyWindow = new modifyWidget(vid);
+	(*modifyWindow).show();
 }
 
 void MainWindow::openSelectWindow(bool remove) {
-	searchWindow = new searchByWidget(container, remove);
+	findResult->clear();
+	searchWindow = new searchByWidget(container, findResult, remove);
 	connect(searchWindow, SIGNAL(listUpdated()), this, SLOT(showListFromContainer()));
+	connect(searchWindow, SIGNAL(searchComplete()), this, SLOT(showFindResults()));
 	(*searchWindow).show();
 }
 
@@ -98,6 +105,28 @@ void MainWindow::showListFromContainer() {
 	objectList->clear();
 	for(unsigned int i=0; i < container->getObjCount(); i++)
 	  objectList->addItem(new QListWidgetItem(QString::fromStdString((*container)[i]->getTitle())));
+}
+
+void MainWindow::showFromFile() {
+	loadFromFile(container, QString("./savedLibrary.json"));
+	showListFromContainer();
+}
+
+void MainWindow::showFindResults() {
+	objectList->clear();
+	if(findResult->getObjCount() == 0) {
+		QMessageBox msgBox;
+		msgBox.setWindowTitle("INFO");
+		msgBox.setText("There are no stored elements with this property");
+		msgBox.exec();
+	}
+	for(unsigned int i=0; i < findResult->getObjCount(); i++) {
+		objectList->addItem(new QListWidgetItem(QString::fromStdString((*findResult)[i]->getTitle())));
+	}
+}
+
+void MainWindow::saveContainerToFile() {
+	saveToFile(container, "./savedLibrary.json");
 }
 
 MainWindow::~MainWindow() {

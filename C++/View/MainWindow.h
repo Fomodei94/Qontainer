@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMessageBox>
 #include <QGridLayout>
 #include <QWidget>
 #include <QLabel>
@@ -10,17 +11,9 @@
 #include <QScrollArea>
 #include <QPushButton>
 #include <QString>
-#include <QFile>
-#include <QFileDialog>
-#include <QScrollArea>
-#include <QByteArray>
-#include <QJsonDocument>
-#include <QJsonObject>
-#include <QJsonValue>
-#include <QJsonArray>
-#include <QTextStream>
 #include "../Model/Qontainer.h"
 #include "../Model/VideoFile.h"
+#include "../LoadSave.h"
 #include "setObjectWidget.h"
 #include "searchByWidget.h"
 #include "modifyWidget.h"
@@ -30,17 +23,18 @@ class MainWindow : public QMainWindow {
 
 private:
 	Qontainer<VideoFile*> *container;
+  Qontainer<VideoFile*> *findResult;
 	QGridLayout* winLayout;
 	QWidget* centralWidget;
   QLabel *listTitle;
 	QListWidget *objectList;
   QScrollArea *scrollArea;
 	QPushButton	*insertButton,
-				*removeButton,
-				*findButton,
-        *refreshButton,
-        *loadButton,
-				*saveButton;
+				      *removeButton,
+				      *findButton,
+              *refreshButton,
+              *loadButton,
+				      *saveButton;
 	setObjectWidget *objectWindow;
 	searchByWidget	*searchWindow;
   modifyWidget  *modifyWindow;
@@ -59,13 +53,16 @@ private slots:
 
 signals:
   void listUpdated();
+  //void searchComplete();
 
-public slots:
+private slots:
 	void windowSelector();
 	void openInsertWindow();
-  void openModifyWindow(QListWidgetItem* item);
+  void openModifyWindow(QListWidgetItem*);
   void showListFromContainer();
-
+  void showFromFile();
+  void showFindResults();
+  void saveContainerToFile();
 };
 
 #endif // MAINWINDOW_H
