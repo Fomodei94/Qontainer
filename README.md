@@ -2,13 +2,13 @@
 
 - [ ] Add polymorphism as there's no tomorrow
 
-- [ ] JSON Load function
+- [X] JSON Load function
 
 - [ ] JSON Save function
 
 - [ ] Elements modify function (with related custom widget)
 
-- [ ] View items function in tableView or listView widget
+- [X] View items function in tableView or listView widget
 
 - [ ] View of search results function
 
