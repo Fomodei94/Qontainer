@@ -23,6 +23,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
+	LoadSave.cpp \
 	Model/VideoFile.cpp \
 	Model/Movie.cpp \
 	Model/Anime.cpp \
@@ -39,6 +40,7 @@ HEADERS += \
 	Model/Anime.h \
 	Model/TvSerie.h \
 	Model/SportMatch.h \
+	LoadSave.h \
         View/MainWindow.h \
 	View/setObjectWidget.h \
 	View/searchByWidget.h \
