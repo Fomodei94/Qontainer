@@ -1,6 +1,6 @@
 #include "searchByWidget.h"
 
-searchByWidget::searchByWidget(Qontainer<VideoFile*> *container, bool remove, QWidget *parent) : QWidget(parent), container(container) {
+searchByWidget::searchByWidget(Qontainer<VideoFile*> *container, Qontainer<VideoFile*> *findResult, bool remove, QWidget *parent) : QWidget(parent), container(container), findResult(findResult) {
 
 	QString functionLabel;
 	if(remove) functionLabel = "Remove";
@@ -113,32 +113,35 @@ void searchByWidget::findItems() {
 	int elem_num = 0;
 	int* itemsIndex;
 
-	Qontainer<VideoFile*> *resultsToVisualize;
-	resultsToVisualize = container->returnFromPosition(itemsIndex, elem_num);
+	findResult->clear();
 
 	if(titleRadioBtn->isChecked())
 		elem_num = container->searchByTitle(searchText->text().toStdString(), itemsIndex);
 
-	if(genreRadioBtn->isChecked())
+	else if(genreRadioBtn->isChecked())
 		elem_num = container->searchByGenre(searchText->text().toStdString(), itemsIndex);
 
-	if(nationRadioBtn->isChecked())
+	else if(nationRadioBtn->isChecked())
 		elem_num = container->searchByNation(searchText->text().toStdString(), itemsIndex);
 
-	if(directorRadioBtn->isChecked())
+	else if(directorRadioBtn->isChecked())
 		elem_num = container->searchByDirector(searchText->text().toStdString(), itemsIndex);
 
-	if(championshipRadioBtn->isChecked())
+	else if(championshipRadioBtn->isChecked())
 		elem_num = container->searchByChampionship(searchText->text().toStdString(), itemsIndex);
 
-	if(yearRadioBtn->isChecked())
+	else if(yearRadioBtn->isChecked())
 		elem_num = container->searchByYear(searchSpinbox->value(), itemsIndex);
 
-	if(episodesRadioBtn->isChecked())
+	else if(episodesRadioBtn->isChecked())
 		elem_num = container->searchByEpisodes(searchSpinbox->value(), itemsIndex);
 
-	if(seasonsRadioBtn->isChecked())
+	else if(seasonsRadioBtn->isChecked())
 		elem_num = container->searchBySeasons(searchSpinbox->value(), itemsIndex);
 
+	findResult = container->returnFromPosition(itemsIndex, elem_num);
+
+	emit searchComplete();
+	exitWindow();
 
 }

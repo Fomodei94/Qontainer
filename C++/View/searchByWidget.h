@@ -15,7 +15,8 @@
 class searchByWidget : public QWidget {
 	Q_OBJECT
 	private:
-		Qontainer<VideoFile*> *container;
+		Qontainer<VideoFile*> *container,
+													*findResult;
 		QGridLayout	*layout;
 		QLabel	*mainLabel,
 				*keywordLabel;
@@ -36,10 +37,11 @@ class searchByWidget : public QWidget {
 					*confirmButton;
 
 	public:
-		searchByWidget(Qontainer<VideoFile*> *container, bool remove = false, QWidget *parent = 0);
+		searchByWidget(Qontainer<VideoFile*> *container, Qontainer<VideoFile*> *findResult, bool remove, QWidget *parent = 0);
 
 	signals:
 		void listUpdated();
+		void searchComplete();
 
 	public slots:
 		void exitWindow();
