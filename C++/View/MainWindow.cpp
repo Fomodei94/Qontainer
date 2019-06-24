@@ -61,8 +61,6 @@ MainWindow::MainWindow(Qontainer<VideoFile*> *container, QWidget *parent) : QMai
 	connect(saveButton, SIGNAL(clicked()), this, SLOT (saveContainerToFile()));
 	connect(loadButton, SIGNAL(clicked()), this, SLOT(showFromFile()));
 
-
-
 }
 
 void MainWindow::openInsertWindow() {
