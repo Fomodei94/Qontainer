@@ -1,5 +1,6 @@
 #include "setObjectWidget.h"
 #include <iostream>
+#include<QMessageBox>
 
 setObjectWidget::setObjectWidget(Qontainer<VideoFile*> *container, QWidget* parent) : QWidget(parent), container(container) {
 	setWindowTitle("Select item(s) type");
@@ -206,8 +207,18 @@ void setObjectWidget::confirmInsertion() {
 			break;
 	}
 	container->pushBack(vid);
-	std::cout<<"Element title: "<<container[0]->getTitle()<<std::endl;
+	/*  INSERTION CONFIRMED INFO MESSAGEBOX
+	QMessageBox msgBox;
+	msgBox.setWindowTitle("INFO");
+	msgBox.setText("Insertion went well!");
+	msgBox.exec();
+	*/
+	emit listUpdated();
+	for(int i=0; i<container->getObjCount(); i++) {
+			std::cout<<"Element "<<i<<" title: "<<(*container)[i]->getTitle()<<std::endl;
+	}
 	exitWindow();
+
 }
 
 void setObjectWidget::confirmRemoval() {

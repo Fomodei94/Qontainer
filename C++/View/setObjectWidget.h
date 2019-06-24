@@ -24,9 +24,9 @@ class setObjectWidget : public QWidget {
 		Qontainer<VideoFile*> *container;
 
 		QGridLayout *layout;
-		
+
 		QComboBox *objSelector;
-		
+
 		QLabel	*mainLabel,
 				*genericVideoLabel,
 				*movieLabel,
@@ -46,7 +46,7 @@ class setObjectWidget : public QWidget {
 				*championshipLabel,
 				*homeTeamLabel,
 				*guestTeamLabel;
-				
+
 		QLineEdit	*titleText,
 					*genreText,
 					*nationText,
@@ -54,27 +54,30 @@ class setObjectWidget : public QWidget {
 					*championshipText,
 					*homeTeamText,
 					*guestTeamText;
-					
+
 		QSpinBox	*yearSpinbox,
 					*lengthSpinbox,
 					*episodesSpinbox,
 					*seasonsSpinbox;
-					
+
 		QCheckBox	*animeFinCheckbox,
 					*serieFinCheckbox;
 
 		QPushButton	*cancelButton,
 					*confirmButton;
-		
+
 	public:
 		setObjectWidget(Qontainer<VideoFile*> *container, QWidget* parent = nullptr);
-		
+
+	signals:
+		void listUpdated();
+
 	public slots:
 		void exitWindow();
 		void disableFields();
 		void confirmInsertion();
 		void confirmRemoval();
-		void confirmSearch(); 
+		void confirmSearch();
 };
 
 #endif // SETOBJECTWIDGET_H
