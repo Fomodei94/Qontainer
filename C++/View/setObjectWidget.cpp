@@ -213,10 +213,10 @@ void setObjectWidget::confirmInsertion() {
 	msgBox.setText("Insertion went well!");
 	msgBox.exec();
 	*/
-	emit listUpdated();
 	for(int i=0; i<container->getObjCount(); i++) {
 			std::cout<<"Element "<<i<<" title: "<<(*container)[i]->getTitle()<<std::endl;
 	}
+	emit listUpdated();
 	exitWindow();
 
 }

@@ -42,11 +42,12 @@ MainWindow::MainWindow(Qontainer<VideoFile*> *container, QWidget *parent) : QMai
 	connect(removeButton, SIGNAL(clicked()), this, SLOT(windowSelector()));
 	connect(findButton, SIGNAL(clicked()), this, SLOT(windowSelector()));
 	connect(refreshButton, SIGNAL(clicked()), this, SLOT(showListFromContainer()));
-	connect(this, SIGNAL(listUpdated()), this, SLOT(showListFromContainer()));
+
 }
 
 void MainWindow::openInsertWindow() {
 	objectWindow = new setObjectWidget(container);
+	connect(objectWindow, SIGNAL(listUpdated()), this, SLOT(showListFromContainer()));
 	(*objectWindow).show();
 }
 
@@ -60,6 +61,7 @@ void MainWindow::windowSelector() {
 
 void MainWindow::openSelectWindow(bool remove) {
 	searchWindow = new searchByWidget(container, remove);
+	connect(searchWindow, SIGNAL(listUpdated()), this, SLOT(showListFromContainer()));
 	(*searchWindow).show();
 }
 

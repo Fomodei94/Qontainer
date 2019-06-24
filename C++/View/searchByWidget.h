@@ -27,23 +27,25 @@ class searchByWidget : public QWidget {
 						*episodesRadioBtn,
 						*seasonsRadioBtn,
 						*championshipRadioBtn;
-						
+
 		QLineEdit	*searchText;
 		QSpinBox	*searchSpinbox;
 		QFrame	*separator1,
 				*separator2;
 		QPushButton	*cancelButton,
 					*confirmButton;
-	
+
 	public:
 		searchByWidget(Qontainer<VideoFile*> *container, bool remove = false, QWidget *parent = 0);
-		
-		
+
+	signals:
+		void listUpdated();
+
 	public slots:
 		void exitWindow();
 		void removeItems();
 		void findItems();
-		
+
 };
 
 #endif //SEARCH_BY_WIDGET_H
