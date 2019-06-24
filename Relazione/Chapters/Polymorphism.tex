@@ -1,5 +1,24 @@
 \section{Polymorphism}
 
-\subsection{Model}
+Pointers belonging to application's main custom container (\emph{Qontainer<VideoFile*>}) can assume polymorphic behavior as they can be used to interact with child classes' objects.\\
+RTTI\footnote{Run-Time Type Identification} and polymorphic behavior can be found in these points of the software:
+\begin{itemize}
+\item \textbf{View/modifyWidget.cpp:} into \emph{activateFields()} function, depending on the object pointed by \emph{VideoFile *vid} GUI widgets dynamically change their state.
+\item \textbf{View/modifyWidget.cpp:} into \emph{confirmModify()} function, depending on the object pointed by \emph{VideoFile *vid} container objects are dynamically modified.
+\item \textbf{Model/Qontainer.h:} into searching functions such as \emph{searchByDirector()}, searching fields are dynamically chosen at run-time, depending on the pointed object.
+\item \textbf{LoadSave.cpp:} into \emph{saveToFile()} function, object type to be saved in JSON file is identified by RTTI.
+\item \textbf{View/MainWindow.cpp:} into \emph{windowSelector()} function, QPushButto *button pointer recognize at run-time which type of widget to create, thanks to RTTI.
+\end{itemize}
 
-\subsection{View}
+\pagebreak
+
+\section{Project log}
+
+Completing the project required \textbf{49 hours} in total, divided as follows:
+\begin{itemize}
+\item Problem analysis: 2h;
+\item Model and template design: 7h;
+\item Qt learning and GUI design: 13h;
+\item Coding: 23,5h;
+\item Testing: 3,5h .
+\end{itemize}
