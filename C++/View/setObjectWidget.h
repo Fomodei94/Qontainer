@@ -76,8 +76,7 @@ class setObjectWidget : public QWidget {
 		void exitWindow();
 		void disableFields();
 		void confirmInsertion();
-		void confirmRemoval();
-		void confirmSearch();
+
 };
 
 #endif // SETOBJECTWIDGET_H

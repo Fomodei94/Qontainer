@@ -9,9 +9,18 @@ searchByWidget::searchByWidget(Qontainer<VideoFile*> *container, bool remove, QW
 	setWindowTitle(functionLabel);
 	setFixedSize(250,450);
 
+	// Styling parameters
+	const QString windowStyle = "background-color:#3a3a3a; color:#FFFFFF;QPushButton{background-color:#2a2a2a; color:#FFFFFF;border: 0.5px solid #AAAAAA; padding: 1px;}";
+	const QString buttonStyle = "background-color:#2a2a2a; color:#FFFFFF;border: 0.5px solid #AAAAAA; padding: 1px;";
+	const QString disabled = "QWidget:disabled{border: 1px solid #DD0000;}QLineEdit{border: 1px solid #00DD00;}QSpinBox{border: 1px solid #00DD00;}QCheckBox{border: 1px solid #00DD00;}";
+
+
 	layout = new QGridLayout(this);
+	this->setStyleSheet(windowStyle);
+
 
 	mainLabel = new QLabel("<h3>Search by: </h3>", this);
+	mainLabel->setStyleSheet("text-align: center;");
 
 	titleRadioBtn = new QRadioButton("Title", this);
 	titleRadioBtn->setChecked(true);
@@ -35,7 +44,9 @@ searchByWidget::searchByWidget(Qontainer<VideoFile*> *container, bool remove, QW
 	searchSpinbox->setRange(1,9999);
 
 	cancelButton = new QPushButton("Cancel", this);
+	cancelButton->setStyleSheet(buttonStyle);
 	confirmButton = new QPushButton(functionLabel, this);
+	confirmButton->setStyleSheet(buttonStyle);
 
 	layout->addWidget(mainLabel,0,0,1,4);
 	layout->addWidget(titleRadioBtn,1,0,1,2);

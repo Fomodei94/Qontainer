@@ -6,9 +6,16 @@ setObjectWidget::setObjectWidget(Qontainer<VideoFile*> *container, QWidget* pare
 	setWindowTitle("Select item(s) type");
 	setFixedSize(380,700);
 
+	// Styling parameters
+	const QString windowStyle = "background-color:#3a3a3a; color:#FFFFFF;";
+	const QString buttonStyle = "background-color:#2a2a2a; color:#FFFFFF;border: 0.5px solid #AAAAAA; padding: 1px;";
+	const QString disabled = "QWidget:disabled{border: 1px solid #DD0000;}QLineEdit{border: 1px solid #00DD00;}QSpinBox{border: 1px solid #00DD00;}QCheckBox{border: 1px solid #00DD00;}";
+
 	layout = new QGridLayout(this);
 
+	this->setStyleSheet(windowStyle);
 	mainLabel = new QLabel(QString("<h2>Select which file type to insert:</h2>"), this);
+	mainLabel->setStyleSheet("font-style: italic; margin: 10px 15px 0px 0px;");
 
 	objSelector = new QComboBox(this);
 	objSelector->addItem("Generic Video File");
@@ -20,13 +27,17 @@ setObjectWidget::setObjectWidget(Qontainer<VideoFile*> *container, QWidget* pare
 	genericVideoLabel = new QLabel("<h3>Generic video file info:</h3>", this);
 	titleLabel = new QLabel("Title:", this);
 	titleText = new QLineEdit(this);
+	titleText->setStyleSheet(disabled);
 	genreLabel = new QLabel("Genre:", this);
 	genreText = new QLineEdit(this);
+	genreText->setStyleSheet(disabled);
 	nationLabel = new QLabel("Nation:", this);
 	nationText = new QLineEdit(this);
+	nationText->setStyleSheet(disabled);
 	yearLabel = new QLabel("Year:", this);
 	yearSpinbox = new QSpinBox(this);
 	yearSpinbox-> setRange(1890,9999);
+	yearSpinbox->setStyleSheet(disabled);
 
 	movieLabel = new QLabel("<h3>Movie specific info:</h3>", this);
 	directorLabel = new QLabel("Director:", this);
@@ -58,7 +69,9 @@ setObjectWidget::setObjectWidget(Qontainer<VideoFile*> *container, QWidget* pare
 	guestTeamText = new QLineEdit(this);
 
 	cancelButton = new QPushButton("Cancel", this);
+	cancelButton->setStyleSheet(buttonStyle);
 	confirmButton = new QPushButton("Insert", this);
+	confirmButton->setStyleSheet(buttonStyle);
 
 	layout->addWidget(mainLabel,0,0,1,4);
 	layout->addWidget(objSelector,1,0,1,3);
@@ -99,14 +112,23 @@ setObjectWidget::setObjectWidget(Qontainer<VideoFile*> *container, QWidget* pare
 	setLayout(layout);
 
 	directorText->setEnabled(false);
+	directorText->setStyleSheet(disabled);
 	lengthSpinbox->setEnabled(false);
+	lengthSpinbox->setStyleSheet(disabled);
 	episodesSpinbox->setEnabled(false);
+	episodesSpinbox->setStyleSheet(disabled);
 	animeFinCheckbox->setEnabled(false);
+	animeFinCheckbox->setStyleSheet(disabled);
 	seasonsSpinbox->setEnabled(false);
+	seasonsSpinbox->setStyleSheet(disabled);
 	serieFinCheckbox->setEnabled(false);
+	serieFinCheckbox->setStyleSheet(disabled);
 	championshipText->setEnabled(false);
+	championshipText->setStyleSheet(disabled);
 	homeTeamText->setEnabled(false);
+	homeTeamText->setStyleSheet(disabled);
 	guestTeamText->setEnabled(false);
+	guestTeamText->setStyleSheet(disabled);
 
 	connect(cancelButton, SIGNAL(clicked()), this, SLOT(exitWindow()));
 	connect(objSelector, SIGNAL(currentIndexChanged(int)), this, SLOT(disableFields()));
@@ -207,24 +229,17 @@ void setObjectWidget::confirmInsertion() {
 			break;
 	}
 	container->pushBack(vid);
-	/*  INSERTION CONFIRMED INFO MESSAGEBOX
+
+	/*  INSERTION CONFIRMED INFO MESSAGEBOX (optional)
 	QMessageBox msgBox;
 	msgBox.setWindowTitle("INFO");
 	msgBox.setText("Insertion went well!");
 	msgBox.exec();
 	*/
-	for(int i=0; i<container->getObjCount(); i++) {
+
+	for(int i=0; i<container->getObjCount(); i++) {	// For terminal logging purpose.
 			std::cout<<"Element "<<i<<" title: "<<(*container)[i]->getTitle()<<std::endl;
-	}
+		}
 	emit listUpdated();
 	exitWindow();
-
-}
-
-void setObjectWidget::confirmRemoval() {
-
-}
-
-void setObjectWidget::confirmSearch() {
-
 }

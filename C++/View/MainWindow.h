@@ -23,6 +23,7 @@
 #include "../Model/VideoFile.h"
 #include "setObjectWidget.h"
 #include "searchByWidget.h"
+#include "modifyWidget.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -42,6 +43,7 @@ private:
 				*saveButton;
 	setObjectWidget *objectWindow;
 	searchByWidget	*searchWindow;
+  modifyWidget  *modifyWindow;
 
 public:
     MainWindow(Qontainer<VideoFile*> *container, QWidget *parent = 0);
@@ -61,6 +63,7 @@ signals:
 public slots:
 	void windowSelector();
 	void openInsertWindow();
+  void openModifyWindow(QListWidgetItem* item);
   void showListFromContainer();
 
 };
