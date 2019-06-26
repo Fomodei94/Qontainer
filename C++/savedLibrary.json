@@ -82,6 +82,16 @@
             "seasons": 3,
             "title": "La casa de papel",
             "type": "TvSerie"
+        },
+        {
+            "championship": "Women World Cup",
+            "genre": "Women Football",
+            "guestTeam": "Netherlands",
+            "homeTeam": "Italy",
+            "nation": "France",
+            "publishingDate": 2019,
+            "title": "WWC quarters",
+            "type": "SportMatch"
         }
     ]
 }
