@@ -31,7 +31,6 @@ class Qontainer {
 			delete[] collection;
 			collection = new_array;
 			arraySize = new_size;
-			std::cout<<"Resize of array!"<<std::endl;
 		}
 
 		void Shift(int index) {
@@ -108,11 +107,8 @@ class Qontainer {
 			if(isFull()) resize(arraySize + 1);
 
 			if(!isFull()){
-				std::cout<<"ObjCount = "<<obj_count<<std::endl;
 				collection[obj_count] = new_element;
 				obj_count++;
-				std::cout<<"Element insertion went fine!"<<std::endl;
-				std::cout<<"ObjCount = "<<obj_count<<std::endl;
 			}
 		}
 

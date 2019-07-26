@@ -230,16 +230,11 @@ void setObjectWidget::confirmInsertion() {
 	}
 	container->pushBack(vid);
 
-	/*  INSERTION CONFIRMED INFO MESSAGEBOX (optional)
+	// INSERTION CONFIRMED INFO MESSAGEBOX (optional)
 	QMessageBox msgBox;
 	msgBox.setWindowTitle("INFO");
 	msgBox.setText("Insertion went well!");
 	msgBox.exec();
-	*/
-
-	for(int i=0; i<container->getObjCount(); i++) {	// For terminal logging purpose.
-			std::cout<<"Element "<<i<<" title: "<<(*container)[i]->getTitle()<<std::endl;
-		}
-	emit listUpdated();
+	
 	exitWindow();
 }
