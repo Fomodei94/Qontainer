@@ -48,7 +48,8 @@ MainWindow::MainWindow(Qontainer<VideoFile*> *container, QWidget *parent) : QMai
 
 	showListFromContainer();
 
-	QListWidgetItem* toBeModified;
+	// Commented to avoid warning, it is an unused variable:
+	// QListWidgetItem* toBeModified;   
 	findResult = new Qontainer<VideoFile*>();
 
 
@@ -83,12 +84,11 @@ void MainWindow::openModifyWindow(QListWidgetItem* item) {
 	for(unsigned int i=0; i < container->getObjCount(); i++) {
 		if((*container)[i]->getTitle() == text.toStdString()) {
 			vid = (*container)[i];
+			modifyWindow = new modifyWidget(vid);
+			(*modifyWindow).show();
 			break;
 		}
 	}
-
-	modifyWindow = new modifyWidget(vid);
-	(*modifyWindow).show();
 }
 
 void MainWindow::openSelectWindow(bool remove) {

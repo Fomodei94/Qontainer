@@ -33,7 +33,7 @@ class Qontainer {
 			arraySize = new_size;
 		}
 
-		void Shift(int index) {
+		void Shift(unsigned int index) {
 			//any_type *it = collection + index;
 			for(; index<obj_count-1; ++index) {
 				collection[index] = collection[index+1];
@@ -72,7 +72,7 @@ class Qontainer {
 		}
 
 		// Operators:
-		any_type operator[](int i) {
+		any_type operator[](unsigned int i) {
 			if(i>=0 && i<obj_count) {
 				return collection[i];
 			}
@@ -218,7 +218,7 @@ class Qontainer {
 			return ind;
 		}
 
-		Qontainer<any_type>* returnFromPosition(int* itemsIndex, int num_elements) {
+		Qontainer<any_type>* returnFromPosition(int* itemsIndex, unsigned int num_elements) {
 			Qontainer<any_type> *toReturn;
 			for(unsigned int i = 0; i<num_elements; i++) {
 				int ind = itemsIndex[i];
