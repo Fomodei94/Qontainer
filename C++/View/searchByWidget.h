@@ -41,7 +41,7 @@ class searchByWidget : public QWidget {
 
 	signals:
 		void listUpdated();
-		void searchComplete();
+		void searchComplete(Qontainer<VideoFile*>*);
 
 	public slots:
 		void exitWindow();

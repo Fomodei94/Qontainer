@@ -111,7 +111,7 @@ void searchByWidget::removeItems() {
 
 void searchByWidget::findItems() {
 	int elem_num = 0;
-	int* itemsIndex = new int[]();
+	int* itemsIndex = new int[container->getObjCount()];
 
 	findResult->clear();
 
@@ -141,7 +141,7 @@ void searchByWidget::findItems() {
 
 	findResult = container->returnFromPosition(itemsIndex, elem_num);
 
-	emit searchComplete();
+	emit searchComplete(findResult);
 	delete[] itemsIndex;
 	exitWindow();
 

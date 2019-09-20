@@ -61,7 +61,7 @@ private slots:
   void openModifyWindow(QListWidgetItem*);
   void showListFromContainer();
   void showFromFile();
-  void showFindResults();
+  void showFindResults(Qontainer<VideoFile*> *results);
   void saveContainerToFile();
 };
 

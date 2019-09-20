@@ -95,7 +95,7 @@ void MainWindow::openSelectWindow(bool remove) {
 	findResult->clear();
 	searchWindow = new searchByWidget(container, findResult, remove);
 	connect(searchWindow, SIGNAL(listUpdated()), this, SLOT(showListFromContainer()));
-	connect(searchWindow, SIGNAL(searchComplete()), this, SLOT(showFindResults()));
+	connect(searchWindow, SIGNAL(searchComplete(Qontainer<VideoFile*>*)), this, SLOT(showFindResults(Qontainer<VideoFile*>*)));
 	(*searchWindow).show();
 }
 
@@ -110,16 +110,19 @@ void MainWindow::showFromFile() {
 	showListFromContainer();
 }
 
-void MainWindow::showFindResults() {
+void MainWindow::showFindResults(Qontainer<VideoFile*> *results) {
 	objectList->clear();
+	findResult = results;
 	if(findResult->getObjCount() == 0) {
 		QMessageBox msgBox;
-		msgBox.setWindowTitle("INFO");
+		msgBox.setWindowTitle("WARNING");
 		msgBox.setText("There are no stored elements with this property");
 		msgBox.exec();
 	}
+	else {
 	for(unsigned int i=0; i < findResult->getObjCount(); i++) {
 		objectList->addItem(new QListWidgetItem(QString::fromStdString((*findResult)[i]->getTitle())));
+		}
 	}
 }
 
