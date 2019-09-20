@@ -219,7 +219,7 @@ class Qontainer {
 		}
 
 		Qontainer<any_type>* returnFromPosition(int* itemsIndex, unsigned int num_elements) {
-			Qontainer<any_type> *toReturn;
+			Qontainer<any_type> *toReturn = new Qontainer<any_type>();
 			for(unsigned int i = 0; i<num_elements; i++) {
 				int ind = itemsIndex[i];
 				toReturn->pushBack(collection[ind]);
