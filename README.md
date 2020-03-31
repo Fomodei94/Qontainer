@@ -1,19 +1,33 @@
-# QONTAINER TODO LIST
+# QONTAINER
 
-- [X] Add polymorphism as there's no tomorrow
+Object Oriented Programming project made by Fomodei94.
 
-- [X] JSON Load function
+## Development infos
 
-- [X] JSON Save function
+* **Programming language:** C++
 
-- [X] Elements modify function (with related custom widget)
+* **Framework:** Qt 5.12
 
-- [X] View items function in tableView or listView widget
+* **Design pattern:** Model-View
 
-- [X] View of search results function
+More details on [Project report](https://github.com/Fomodei94/Qontainer/blob/develop/Relazione/relazione.pdf)
 
-- [X] Add QMessageBox to notify success/failure of operations
+## User interface example snapshots
 
-- [X] Report/User-Manual (some notes in notebook)
+* Main window:
 
-- [X] Final SW verification of every feature & compile + run on Ranzi's VM
+![User interface main window](https://github.com/Fomodei94/Qontainer/blob/develop/Design/Gui/Screenshot_2019-06-24_23-53-52.png)
+
+* Adding an object to library:
+
+![Add object window](https://github.com/Fomodei94/Qontainer/blob/develop/Design/Gui/Screenshot_2019-06-24_23-55-11.png)
+
+* Searching window:
+
+![Search object window]()
+
+## Contact me
+
+| Name | Github profile | Email |
+| ------ | ------ | ------ |
+| Federico Omodei | https://github.com/Fomodei94 | federico.omodei[at]gmail.com
