@@ -24,7 +24,7 @@ More details on [Project report](https://github.com/Fomodei94/Qontainer/blob/dev
 
 * Searching window:
 
-![Search object window]()
+![Search object window](https://github.com/Fomodei94/Qontainer/blob/develop/Design/Gui/Screenshot_2020-03-31_12-50-31.png)
 
 ## Contact me
 
