@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <locale>
 #include "VideoFile.h"
 #include "Movie.h"
 #include "Anime.h"
@@ -10,6 +11,7 @@
 #include "SportMatch.h"
 
 using std::string;
+using std::locale;
 
 template <class any_type>
 
@@ -117,7 +119,14 @@ class Qontainer {
     int searchByTitle(const string& tit, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; i++){
-				if(collection[i]->getTitle() == tit) {
+				std::locale loc;
+				string titleToCheck = collection[i]->getTitle();
+				string titleToLowercase;
+				for(string::size_type i=0; i<titleToCheck.size(); i++) {
+					titleToLowercase += tolower(titleToCheck[i], loc);
+				}
+
+				if(titleToLowercase == tit) {
 					toReturn[ind] = i;
 					ind++;
 				}

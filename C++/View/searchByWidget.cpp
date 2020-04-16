@@ -115,8 +115,16 @@ void searchByWidget::findItems() {
 
 	findResult->clear();
 
-	if(titleRadioBtn->isChecked())
+	if(titleRadioBtn->isChecked()) {
+		std::locale loc;
+		string searchKeyword = searchText->text().toStdString();
+		string lowercaseKeyword;
+		for(string::size_type i=0; i<searchKeyword.size(); i++) {
+			lowercaseKeyword += tolower(searchKeyword[i], loc);
+		}
 		elem_num = container->searchByTitle(searchText->text().toStdString(), itemsIndex);
+	}
+		
 
 	else if(genreRadioBtn->isChecked())
 		elem_num = container->searchByGenre(searchText->text().toStdString(), itemsIndex);
