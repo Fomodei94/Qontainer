@@ -69,9 +69,10 @@ searchByWidget::searchByWidget(Qontainer<VideoFile*> *container, Qontainer<Video
 
 	connect(cancelButton, SIGNAL(clicked()), this, SLOT(exitWindow()));
 	if(remove) connect(confirmButton, SIGNAL(clicked()), this, SLOT(removeItems()));
-	else connect(confirmButton, SIGNAL(clicked()), this, SLOT(findItems()));
-
-
+	else {
+		// connect(searchText, SIGNAL(returnPressed()), this, SLOT(findItems()));	FIX: segfault when pressing enter key instead of find button.
+		connect(confirmButton, SIGNAL(clicked()), this, SLOT(findItems()));
+	}
 }
 
 void searchByWidget::exitWindow() {
@@ -122,18 +123,41 @@ void searchByWidget::findItems() {
 		for(string::size_type i=0; i<searchKeyword.size(); i++) {
 			lowercaseKeyword += tolower(searchKeyword[i], loc);
 		}
-		elem_num = container->searchByTitle(searchText->text().toStdString(), itemsIndex);
+		elem_num = container->searchByTitle(lowercaseKeyword, itemsIndex);
 	}
 		
 
-	else if(genreRadioBtn->isChecked())
-		elem_num = container->searchByGenre(searchText->text().toStdString(), itemsIndex);
+	else if(genreRadioBtn->isChecked()) {
+		std::locale loc;
+		string searchKeyword = searchText->text().toStdString();
+		string lowercaseKeyword;
+		for(string::size_type i=0; i<searchKeyword.size(); i++) {
+			lowercaseKeyword += tolower(searchKeyword[i], loc);
+		}
+		elem_num = container->searchByGenre(lowercaseKeyword, itemsIndex);
 
-	else if(nationRadioBtn->isChecked())
-		elem_num = container->searchByNation(searchText->text().toStdString(), itemsIndex);
+	}
 
-	else if(directorRadioBtn->isChecked())
-		elem_num = container->searchByDirector(searchText->text().toStdString(), itemsIndex);
+	else if(nationRadioBtn->isChecked()) {
+		std::locale loc;
+		string searchKeyword = searchText->text().toStdString();
+		string lowercaseKeyword;
+		for(string::size_type i=0; i<searchKeyword.size(); i++) {
+			lowercaseKeyword += tolower(searchKeyword[i], loc);
+		}
+		elem_num = container->searchByNation(lowercaseKeyword, itemsIndex);
+	}
+		
+	else if(directorRadioBtn->isChecked()) {
+		std::locale loc;
+		string searchKeyword = searchText->text().toStdString();
+		string lowercaseKeyword;
+		for(string::size_type i=0; i<searchKeyword.size(); i++) {
+			lowercaseKeyword += tolower(searchKeyword[i], loc);
+		}
+		elem_num = container->searchByDirector(lowercaseKeyword, itemsIndex);
+	}
+		
 
 	else if(championshipRadioBtn->isChecked())
 		elem_num = container->searchByChampionship(searchText->text().toStdString(), itemsIndex);
