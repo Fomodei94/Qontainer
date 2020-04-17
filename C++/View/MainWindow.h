@@ -66,6 +66,7 @@ private slots:
   void showFromFile();
   void showFindResults(Qontainer<VideoFile*> *results);
   void saveContainerToFile();
+  void quickSearch();
 };
 
 #endif // MAINWINDOW_H

@@ -67,7 +67,26 @@ MainWindow::MainWindow(Qontainer<VideoFile*> *container, QWidget *parent) : QMai
 	connect(refreshButton, SIGNAL(clicked()), this, SLOT(showListFromContainer()));
 	connect(saveButton, SIGNAL(clicked()), this, SLOT (saveContainerToFile()));
 	connect(loadButton, SIGNAL(clicked()), this, SLOT(showFromFile()));
+	connect(dynamicSearchBox, SIGNAL(textEdited(const QString&)), this, SLOT(quickSearch()));
 
+}
+
+void MainWindow::quickSearch() {
+	int elem_num = 0;
+	int* itemsIndex = new int[container->getObjCount()];
+	std::locale loc;
+	string searchKeyword = dynamicSearchBox->text().toStdString();
+	string lowercaseKeyword;
+	for(string::size_type i=0; i<searchKeyword.size(); i++) {
+		lowercaseKeyword += tolower(searchKeyword[i], loc);
+	}
+	elem_num = container->searchByTitle(lowercaseKeyword, itemsIndex);
+
+	findResult = container->returnFromPosition(itemsIndex, elem_num);
+
+	showFindResults(findResult);
+
+	delete[] itemsIndex;
 }
 
 void MainWindow::openInsertWindow() {
@@ -119,17 +138,17 @@ void MainWindow::showFromFile() {
 void MainWindow::showFindResults(Qontainer<VideoFile*> *results) {
 	objectList->clear();
 	findResult = results;
-	if(findResult->getObjCount() == 0) {
+	/*if(findResult->getObjCount() == 0) {
 		QMessageBox msgBox;
 		msgBox.setWindowTitle("WARNING");
 		msgBox.setText("There are no stored elements with this property");
 		msgBox.exec();
 	}
-	else {
+	else { */
 	for(unsigned int i=0; i < findResult->getObjCount(); i++) {
 		objectList->addItem(new QListWidgetItem(QString::fromStdString((*findResult)[i]->getTitle())));
 		}
-	}
+	//}
 }
 
 void MainWindow::saveContainerToFile() {
