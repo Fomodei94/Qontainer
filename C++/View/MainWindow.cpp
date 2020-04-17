@@ -7,15 +7,19 @@ MainWindow::MainWindow(Qontainer<VideoFile*> *container, QWidget *parent) : QMai
 
 	// Styling parameters
 	const QString windowStyle = "background-color:#3a3a3a; color:#FFFFFF;";
-	const QString buttonStyle = "background-color:#2a2a2a; color:#FFFFFF;border: 0.5px solid #AAAAAA; padding: 1px;";
+	const QString buttonStyle = "background-color:#2a2a2a; margin: 0px 15px 15px 15px; color:#FFFFFF;border: 0.5px solid #AAAAAA; padding: 1px;";
 
 	centralWidget = new QWidget(this);
 	centralWidget->setStyleSheet(windowStyle);
 	setCentralWidget(centralWidget);
 	winLayout = new QGridLayout(centralWidget);
 
+	dynamicSearchLabel = new QLabel("Quick search: ", this);
+	dynamicSearchLabel->setStyleSheet("text-align: center; margin-left: 120px;");
+	dynamicSearchBox = new QLineEdit(this);
+	dynamicSearchBox->setStyleSheet("margin-bottom: 8px; margin-top:8px; margin-right: 120px;");
 	listTitle = new QLabel("<h1>My media library :    </h1>",centralWidget);
-	listTitle->setStyleSheet("font-style: italic; margin: 10px 15px 0px 0px;");
+	listTitle->setStyleSheet("text-align:center; font-style: italic; margin-top: 10px; margin-left: 220px;");
 	objectList = new QListWidget(centralWidget);
 	objectList->setSpacing(2);
 	objectList->setStyleSheet("padding: 15px; margin: 0px 15px 15px 15px; background-color:#3a3a3a; color:#00DD00;border: 2px solid #FFFFFF");
@@ -25,7 +29,7 @@ MainWindow::MainWindow(Qontainer<VideoFile*> *container, QWidget *parent) : QMai
 	insertButton->setStyleSheet(buttonStyle);
 	removeButton = new QPushButton("Remove Items", centralWidget );
 	removeButton->setStyleSheet(buttonStyle);
-	findButton = new QPushButton("Find Items", centralWidget);
+	findButton = new QPushButton("Advanced search", centralWidget);
 	findButton->setStyleSheet(buttonStyle);
 	saveButton = new QPushButton("Save to file", centralWidget);
 	saveButton->setStyleSheet(buttonStyle);
@@ -35,14 +39,16 @@ MainWindow::MainWindow(Qontainer<VideoFile*> *container, QWidget *parent) : QMai
 	refreshButton->setStyleSheet(buttonStyle);
 
 	// Layout setting
-	winLayout->addWidget(listTitle,0,1,1,3);
-	winLayout->addWidget(objectList,1,0,3,3);
-	winLayout->addWidget(insertButton,4,0);
-	winLayout->addWidget(removeButton,4,1);
-	winLayout->addWidget(findButton,4,2);
-	winLayout->addWidget(refreshButton,1,3,2,1);
-	winLayout->addWidget(saveButton,2,3,2,1);
-	winLayout->addWidget(loadButton,3,3,2,1);
+	winLayout->addWidget(listTitle,0,0,1,3);
+	winLayout->addWidget(dynamicSearchLabel,1,0);
+	winLayout->addWidget(dynamicSearchBox,1,1,1,2);
+	winLayout->addWidget(objectList,2,0,3,3);
+	winLayout->addWidget(insertButton,5,0);
+	winLayout->addWidget(removeButton,5,1);
+	winLayout->addWidget(findButton,5,2);
+	winLayout->addWidget(refreshButton,2,3,2,1);
+	winLayout->addWidget(saveButton,3,3,2,1);
+	winLayout->addWidget(loadButton,4,3,2,1);
 
 	setLayout(winLayout);
 
