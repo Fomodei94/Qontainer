@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QGridLayout>
 #include <QWidget>
+#include <QLineEdit>
 #include <QLabel>
 #include <QListWidget>
 #include <QListWidgetItem>
@@ -26,7 +27,9 @@ private:
   Qontainer<VideoFile*> *findResult;
 	QGridLayout* winLayout;
 	QWidget* centralWidget;
-  QLabel *listTitle;
+  QLabel *listTitle,
+          *dynamicSearchLabel;
+  QLineEdit *dynamicSearchBox;
 	QListWidget *objectList;
   QScrollArea *scrollArea;
 	QPushButton	*insertButton,
