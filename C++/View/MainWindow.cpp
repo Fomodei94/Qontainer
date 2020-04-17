@@ -80,7 +80,7 @@ void MainWindow::quickSearch() {
 	for(string::size_type i=0; i<searchKeyword.size(); i++) {
 		lowercaseKeyword += tolower(searchKeyword[i], loc);
 	}
-	elem_num = container->searchByTitle(lowercaseKeyword, itemsIndex);
+	elem_num = container->partialTitleMatch(lowercaseKeyword, itemsIndex);
 
 	findResult = container->returnFromPosition(itemsIndex, elem_num);
 

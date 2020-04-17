@@ -116,6 +116,24 @@ class Qontainer {
 
         // Search Methods:
 
+	int partialTitleMatch(const string& tit, int* toReturn) {
+		int ind=0;
+			for(unsigned int i=0; i<obj_count; i++){
+				std::locale loc;
+				string titleToCheck = collection[i]->getTitle();
+				string titleToLowercase;
+				for(string::size_type i=0; i<titleToCheck.size(); i++) {
+					titleToLowercase += tolower(titleToCheck[i], loc);
+				}
+
+				if(titleToLowercase.find(tit) != string::npos) {
+					toReturn[ind] = i;
+					ind++;
+				}
+			}
+			return ind;
+	}
+
     int searchByTitle(const string& tit, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; i++){
