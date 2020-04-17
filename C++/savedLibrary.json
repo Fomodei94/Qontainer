@@ -79,7 +79,7 @@
             "genre": "Crime",
             "nation": "Spain",
             "publishingDate": 2017,
-            "seasons": 3,
+            "seasons": 4,
             "title": "La casa de papel",
             "type": "TvSerie"
         },
@@ -92,6 +92,15 @@
             "publishingDate": 2019,
             "title": "WWC quarters",
             "type": "SportMatch"
+        },
+        {
+            "director": "Hayao Miyazaki",
+            "genre": "Animation",
+            "length": 92,
+            "nation": "Japan",
+            "publishingDate": 2010,
+            "title": "Porco Rosso",
+            "type": "Movie"
         }
     ]
 }
