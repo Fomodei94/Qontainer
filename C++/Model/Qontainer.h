@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <locale>
 #include "VideoFile.h"
 #include "Movie.h"
 #include "Anime.h"
@@ -10,6 +11,7 @@
 #include "SportMatch.h"
 
 using std::string;
+using std::locale;
 
 template <class any_type>
 
@@ -114,10 +116,35 @@ class Qontainer {
 
         // Search Methods:
 
+	int partialTitleMatch(const string& tit, int* toReturn) {
+		int ind=0;
+			for(unsigned int i=0; i<obj_count; i++){
+				std::locale loc;
+				string titleToCheck = collection[i]->getTitle();
+				string titleToLowercase;
+				for(string::size_type i=0; i<titleToCheck.size(); i++) {
+					titleToLowercase += tolower(titleToCheck[i], loc);
+				}
+
+				if(titleToLowercase.find(tit) != string::npos) {
+					toReturn[ind] = i;
+					ind++;
+				}
+			}
+			return ind;
+	}
+
     int searchByTitle(const string& tit, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; i++){
-				if(collection[i]->getTitle() == tit) {
+				std::locale loc;
+				string titleToCheck = collection[i]->getTitle();
+				string titleToLowercase;
+				for(string::size_type i=0; i<titleToCheck.size(); i++) {
+					titleToLowercase += tolower(titleToCheck[i], loc);
+				}
+
+				if(titleToLowercase == tit) {
 					toReturn[ind] = i;
 					ind++;
 				}
@@ -128,7 +155,14 @@ class Qontainer {
 		int searchByGenre(const string& gen, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
-				if(collection[i]->getGenre() == gen) {
+				std::locale loc;
+				string genreToCheck = collection[i]->getGenre();
+				string genreToLowercase;
+				for(string::size_type i=0; i<genreToCheck.size(); i++) {
+					genreToLowercase += tolower(genreToCheck[i], loc);
+				}
+
+				if(genreToLowercase == gen) {
 					toReturn[ind] = i;
 					ind++;
 				}
@@ -139,7 +173,13 @@ class Qontainer {
 		int searchByNation(const string& nat, int* toReturn) {
 			int ind=0;
 			for(unsigned int i=0; i<obj_count; ++i){
-				if(collection[i]->getNation() == nat) {
+				std::locale loc;
+				string nationToCheck = collection[i]->getNation();
+				string nationToLowercase;
+				for(string::size_type i=0; i<nationToCheck.size(); i++) {
+					nationToLowercase += tolower(nationToCheck[i], loc);
+				}
+				if(nationToLowercase == nat) {
 					toReturn[ind] = i;
 					ind++;
 				}
@@ -164,7 +204,13 @@ class Qontainer {
 				VideoFile* aux = collection[i];
 				Movie* dinam = dynamic_cast<Movie*>(aux);
 				if(dinam) {
-					if(dinam->getDirector() == dir) {
+					std::locale loc;
+					string directorToCheck = dinam->getDirector();
+					string directorToLowercase;
+					for(string::size_type i=0; i<directorToCheck.size(); i++) {
+						directorToLowercase += tolower(directorToCheck[i], loc);
+					}
+					if(directorToLowercase == dir) {
 						toReturn[ind] = i;
 						ind++;
 					}
@@ -209,7 +255,13 @@ class Qontainer {
 				VideoFile* aux = collection[i];
 				SportMatch* dinam = dynamic_cast<SportMatch*>(aux);
 				if(dinam) {
-					if(dinam->getChampionship() == champ) {
+					std::locale loc;
+					string championshipToCheck = dinam->getChampionship();
+					string championshipToLowercase;
+					for(string::size_type i=0; i<championshipToCheck.size(); i++) {
+						championshipToLowercase += tolower(championshipToCheck[i], loc);
+					}
+					if(championshipToLowercase == champ) {
 						toReturn[ind] = i;
 						ind++;
 					}
