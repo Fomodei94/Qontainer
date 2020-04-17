@@ -47,7 +47,7 @@ searchByWidget::searchByWidget(Qontainer<VideoFile*> *container, Qontainer<Video
 	cancelButton->setStyleSheet(buttonStyle);
 	confirmButton = new QPushButton(functionLabel, this);
 	confirmButton->setStyleSheet(buttonStyle);
-
+	
 	layout->addWidget(mainLabel,0,0,1,4);
 	layout->addWidget(titleRadioBtn,1,0,1,2);
 	layout->addWidget(genreRadioBtn,1,2,1,2);
@@ -68,11 +68,11 @@ searchByWidget::searchByWidget(Qontainer<VideoFile*> *container, Qontainer<Video
 	setLayout(layout);
 
 	connect(cancelButton, SIGNAL(clicked()), this, SLOT(exitWindow()));
-	if(remove) connect(confirmButton, SIGNAL(clicked()), this, SLOT(removeItems()));
+	if(remove)	connect(confirmButton, SIGNAL(clicked()), this, SLOT(removeItems()));
 	else {
-		// connect(searchText, SIGNAL(returnPressed()), this, SLOT(findItems()));	FIX: segfault when pressing enter key instead of find button.
 		connect(confirmButton, SIGNAL(clicked()), this, SLOT(findItems()));
-	}
+		// connect(searchText, SIGNAL(returnPressed()), this, SLOT(findItems()));  FIX: unstable, may cause segfault.
+	}	
 }
 
 void searchByWidget::exitWindow() {
@@ -158,7 +158,6 @@ void searchByWidget::findItems() {
 		elem_num = container->searchByDirector(lowercaseKeyword, itemsIndex);
 	}
 		
-
 	else if(championshipRadioBtn->isChecked())
 		elem_num = container->searchByChampionship(searchText->text().toStdString(), itemsIndex);
 
@@ -176,5 +175,4 @@ void searchByWidget::findItems() {
 	emit searchComplete(findResult);
 	delete[] itemsIndex;
 	exitWindow();
-
 }
