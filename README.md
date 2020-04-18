@@ -16,15 +16,15 @@ More details on [Project report](https://github.com/Fomodei94/Qontainer/blob/dev
 
 * Main window:
 
-![User interface main window](https://github.com/Fomodei94/Qontainer/blob/develop/Design/Gui/Screenshot_2019-06-24_23-53-52.png)
+![User interface main window](./Design/Gui/MainWindow_v1.1.2.png)
 
 * Adding an object to library:
 
-![Add object window](https://github.com/Fomodei94/Qontainer/blob/develop/Design/Gui/Screenshot_2019-06-24_23-55-11.png)
+![Add object window](./Design/Gui/InsertWindow.png)
 
-* Searching window:
+* Advanced search window:
 
-![Search object window](https://github.com/Fomodei94/Qontainer/blob/develop/Design/Gui/Screenshot_2020-03-31_12-50-31.png)
+![Search object window](./Design/Gui/AdvancedSearch.png)
 
 ## Contact me
 
