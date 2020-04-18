@@ -7,7 +7,7 @@ MainWindow::MainWindow(Qontainer<VideoFile*> *container, QWidget *parent) : QMai
 
 	// Styling parameters
 	const QString windowStyle = "background-color:#3a3a3a; color:#FFFFFF;";
-	const QString buttonStyle = "background-color:#2a2a2a; margin: 0px 15px 15px 15px; color:#FFFFFF;border: 0.5px solid #AAAAAA; padding: 1px;";
+	const QString buttonStyle = "background-color:#2a2a2a; margin: 0px 15px 25px 15px; color:#FFFFFF;border: 0.5px solid #AAAAAA; padding: 1px;";
 
 	centralWidget = new QWidget(this);
 	centralWidget->setStyleSheet(windowStyle);
@@ -27,16 +27,22 @@ MainWindow::MainWindow(Qontainer<VideoFile*> *container, QWidget *parent) : QMai
 	scrollArea->setWidget(objectList);
 	insertButton = new QPushButton("Insert Item", centralWidget);
 	insertButton->setStyleSheet(buttonStyle);
+	insertButton->setMaximumSize(200,50);
 	removeButton = new QPushButton("Remove Items", centralWidget );
 	removeButton->setStyleSheet(buttonStyle);
+	removeButton->setMaximumSize(200,50);
 	findButton = new QPushButton("Advanced search", centralWidget);
 	findButton->setStyleSheet(buttonStyle);
+	findButton->setMaximumSize(200,50);
 	saveButton = new QPushButton("Save to file", centralWidget);
 	saveButton->setStyleSheet(buttonStyle);
+	saveButton->setMaximumSize(200,50);
 	loadButton = new QPushButton("Load from file", centralWidget);
 	loadButton->setStyleSheet(buttonStyle);
+	loadButton->setMaximumSize(200,50);
 	refreshButton = new QPushButton("Refresh list", centralWidget);
 	refreshButton->setStyleSheet(buttonStyle);
+	refreshButton->setMaximumSize(200,50);
 
 	// Layout setting
 	winLayout->addWidget(listTitle,0,0,1,3);
@@ -84,7 +90,12 @@ void MainWindow::quickSearch() {
 
 	findResult = container->returnFromPosition(itemsIndex, elem_num);
 
-	showFindResults(findResult);
+	objectList->clear();
+	for(unsigned int i=0; i < findResult->getObjCount(); i++) {
+		objectList->addItem(new QListWidgetItem(QString::fromStdString((*findResult)[i]->getTitle())));
+		}
+
+	// showFindResults(findResult);
 
 	delete[] itemsIndex;
 }
@@ -133,26 +144,35 @@ void MainWindow::showListFromContainer() {
 void MainWindow::showFromFile() {
 	loadFromFile(container, QString("./savedLibrary.json"));
 	showListFromContainer();
+	QMessageBox loadSuccess;
+	loadSuccess.setWindowTitle("Info");
+	loadSuccess.setText("Loading from file completed successfully!");
+	loadSuccess.exec();
 }
 
 void MainWindow::showFindResults(Qontainer<VideoFile*> *results) {
 	objectList->clear();
 	findResult = results;
-	/*if(findResult->getObjCount() == 0) {
+	if(findResult->getObjCount() == 0) {
 		QMessageBox msgBox;
 		msgBox.setWindowTitle("WARNING");
 		msgBox.setText("There are no stored elements with this property");
 		msgBox.exec();
+		showListFromContainer();
 	}
-	else { */
+	else { 
 	for(unsigned int i=0; i < findResult->getObjCount(); i++) {
 		objectList->addItem(new QListWidgetItem(QString::fromStdString((*findResult)[i]->getTitle())));
 		}
-	//}
+	}
 }
 
 void MainWindow::saveContainerToFile() {
 	saveToFile(container, "./savedLibrary.json");
+	QMessageBox saveSuccess;
+	saveSuccess.setWindowTitle("Info");
+	saveSuccess.setText("Saving to file completed successfully!");
+	saveSuccess.exec();
 }
 
 MainWindow::~MainWindow() {
